@@ -4,16 +4,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 interface Props {
 	title: string;
 	description: string;
-	canonicalPath: string;
 	heading: string;
 	effectiveDate: string;
 	lastUpdated?: string;
 }
 
-const { title, description, canonicalPath, heading, effectiveDate, lastUpdated } = Astro.props;
+const { title, description, heading, effectiveDate, lastUpdated } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description} canonicalPath={canonicalPath}>
+<BaseLayout title={title} description={description}>
 	<article class="legal section">
 		<div class="site-wrap legal__wrap">
 			<span class="section-label">Legal</span>

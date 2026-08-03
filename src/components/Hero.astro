@@ -1,13 +1,21 @@
 ---
+import { withBase } from '../lib/urls';
+
 const appStoreUrl = 'https://apps.shopify.com/blocklist';
+const networkImage = withBase('identity-network.jpg');
 ---
 
 <section class="hero" aria-labelledby="hero-heading">
-	<div class="hero__plane" aria-hidden="true"></div>
+	<div
+		class="hero__plane"
+		aria-hidden="true"
+		style={`--hero-network: url('${networkImage}')`}
+	>
+	</div>
 	<div class="site-wrap hero__content">
 		<img
 			class="hero__logo reveal"
-			src="/logo.png"
+			src={withBase('logo.png')}
 			alt="Blox"
 			width="160"
 			height="160"
@@ -53,7 +61,7 @@ const appStoreUrl = 'https://apps.shopify.com/blocklist';
 		content: '';
 		position: absolute;
 		inset: 0;
-		background-image: url('/identity-network.jpg');
+		background-image: var(--hero-network);
 		background-size: cover;
 		background-position: center 30%;
 		opacity: 0.18;

@@ -1,15 +1,17 @@
 ---
+import { withBase } from '../lib/urls';
+
 const appStoreUrl = 'https://apps.shopify.com/blocklist';
 ---
 
 <header class="site-header">
 	<div class="site-wrap site-header__inner">
-		<a class="brand" href="/" aria-label="Blox home">
-			<img src="/logo-512.png" alt="" width="36" height="36" class="brand__mark" />
+		<a class="brand" href={withBase()} aria-label="Blox home">
+			<img src={withBase('logo-512.png')} alt="" width="36" height="36" class="brand__mark" />
 			<span class="brand__name">Blox</span>
 		</a>
 		<nav class="site-nav" aria-label="Primary">
-			<a href="/#how-it-works">How it works</a>
+			<a href={`${withBase()}#how-it-works`}>How it works</a>
 			<a class="btn site-nav__cta" href={appStoreUrl} rel="noopener noreferrer">
 				Install
 			</a>

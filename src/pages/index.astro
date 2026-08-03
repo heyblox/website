@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
+import { withBase } from '../lib/urls';
 
 const appStoreUrl = 'https://apps.shopify.com/blocklist';
 
@@ -10,7 +11,7 @@ const jsonLd = [
 		'@type': 'Organization',
 		name: 'Blox',
 		url: 'https://heyblox.com',
-		logo: 'https://heyblox.com/logo.png',
+		logo: 'https://heyblox.com/website/logo.png',
 		email: 'privacy@heyblox.com',
 	},
 	{
@@ -35,7 +36,6 @@ const jsonLd = [
 <BaseLayout
 	title="Blox: Chargeback Blacklist for Shopify"
 	description="Block fraudsters once. We’ll handle the rest. Stop chargebacks, refund abusers, and repeat fraudsters with a merchant-powered community blocklist for Shopify."
-	canonicalPath="/"
 	jsonLd={jsonLd}
 >
 	<Hero />
@@ -82,7 +82,7 @@ const jsonLd = [
 			</div>
 			<figure class="how__visual">
 				<img
-					src="/identity-network.jpg"
+					src={withBase('identity-network.jpg')}
 					alt="Network diagram showing Blox linking customer identities across emails, addresses, and accounts"
 					width="1536"
 					height="1024"
@@ -94,7 +94,7 @@ const jsonLd = [
 
 	<section class="section trust" aria-labelledby="trust-heading">
 		<div class="site-wrap trust__inner">
-			<img class="trust__mark" src="/logo-512.png" alt="" width="48" height="48" />
+			<img class="trust__mark" src={withBase('logo-512.png')} alt="" width="48" height="48" />
 			<span class="section-label">From merchants on Shopify</span>
 			<blockquote class="trust__quote" id="trust-heading">
 				<p>
