@@ -35,7 +35,7 @@ const jsonLd = [
 
 <BaseLayout
 	title="Blox: Chargeback Blacklist for Shopify"
-	description="Block fraudsters once. We’ll handle the rest. Stop chargebacks, refund abusers, and repeat fraudsters with a merchant-powered community blocklist for Shopify."
+	description="Block fraudsters once. We’ll handle the rest. Shopify fraud prevention with a community blocklist—stop chargebacks, serial returners, and refund abuse before fulfillment."
 	jsonLd={jsonLd}
 >
 	<Hero />
@@ -109,6 +109,11 @@ const jsonLd = [
 			<p class="section-lead">
 				Hold or auto-cancel high-risk orders, discover your worst customers, and auto-block
 				blacklisted shoppers—with a free plan and 30-day trial on paid plans.
+			</p>
+			<p class="trust__more">
+				<a href={withBase('guides/how-to-block-repeat-chargeback-customers/')}>
+					How to block repeat chargeback customers
+				</a>
 			</p>
 		</div>
 	</section>
@@ -227,6 +232,22 @@ const jsonLd = [
 
 	.trust__quote cite {
 		font-style: normal;
+	}
+
+	.trust__more {
+		margin-top: 1.5rem;
+		font-size: 0.95rem;
+	}
+
+	.trust__more a {
+		color: var(--color-fg);
+		text-decoration: none;
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.trust__more a:hover {
+		color: var(--color-red);
+		border-color: var(--color-red);
 	}
 
 	.cta {

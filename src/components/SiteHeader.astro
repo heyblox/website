@@ -12,6 +12,7 @@ const appStoreUrl = 'https://apps.shopify.com/blocklist';
 		</a>
 		<nav class="site-nav" aria-label="Primary">
 			<a href={`${withBase()}#how-it-works`}>How it works</a>
+			<a href={withBase('guides/')}>Guides</a>
 			<a class="btn site-nav__cta" href={appStoreUrl} rel="noopener noreferrer">
 				Install
 			</a>
@@ -84,7 +85,7 @@ const appStoreUrl = 'https://apps.shopify.com/blocklist';
 		font-size: 0.85rem;
 	}
 
-	@media (max-width: 560px) {
+	@media (max-width: 720px) {
 		.site-nav a:not(.btn) {
 			display: none;
 		}
