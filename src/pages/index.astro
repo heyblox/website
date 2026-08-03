@@ -27,14 +27,14 @@ const jsonLd = [
 			priceCurrency: 'USD',
 		},
 		description:
-			'Community-powered Shopify blocklist with identity linking to stop chargebacks, return abuse, and repeat fraudsters.',
+			'Stop fraudulent customers using our community blocklist. Block by email, phone, address, or payment. When one store flags fraud, all stores are protected.',
 	},
 ];
 ---
 
 <BaseLayout
-	title="Blox — Shopify Chargeback & Customer Blocklist"
-	description="Block fraudsters, chargeback abusers, and serial returners on Shopify. Blox links identities across emails, addresses, and cards—and shares protection across the merchant network."
+	title="Blox: Chargeback Blacklist for Shopify"
+	description="Block fraudsters once. We’ll handle the rest. Stop chargebacks, refund abusers, and repeat fraudsters with a merchant-powered community blocklist for Shopify."
 	canonicalPath="/"
 	jsonLd={jsonLd}
 >
@@ -42,14 +42,14 @@ const jsonLd = [
 
 	<section class="section problem" aria-labelledby="problem-heading">
 		<div class="site-wrap">
-			<span class="section-label">The problem</span>
+			<span class="section-label">Stop abuse before it spreads</span>
 			<h2 id="problem-heading" class="section-title">
-				A single-store blocklist is a revolving door.
+				Blox stops the customers who defraud you.
 			</h2>
 			<p class="section-lead">
-				Bad actors rotate emails, shipping addresses, and cards. They hit one store, get
-				blocked, then show up somewhere else—or under a new account on yours. Local
-				rules alone can’t keep up.
+				Block repeat fraudsters, prevent chargebacks, and stop refund abusers before they
+				place another order. Cancel high-risk orders before fulfillment—so trouble doesn’t
+				reach your warehouse or your processor.
 			</p>
 		</div>
 	</section>
@@ -57,26 +57,26 @@ const jsonLd = [
 	<section class="section how" id="how-it-works" aria-labelledby="how-heading">
 		<div class="site-wrap how__grid">
 			<div class="how__copy">
-				<span class="section-label">How it works</span>
+				<span class="section-label">Blocked once, blocked everywhere</span>
 				<h2 id="how-heading" class="section-title">
-					Link the person. Share the block.
+					A merchant-powered blocklist.
 				</h2>
 				<p class="section-lead">
-					Blox connects customer identifiers into one identity—and turns every merchant
-					block into network-wide signal.
+					When one store flags fraud, all stores are protected. Customers are
+					deduplicated. Simple rules. No AI black box. No per-transaction fees.
 				</p>
 				<ol class="how__steps">
 					<li>
-						<strong>Block once</strong>
-						<span>Flag a fraudster, chargeback abuser, or serial returner in your store.</span>
+						<strong>Block by email, phone, address, or payment</strong>
+						<span>Easily block any customer without complex fraud rules.</span>
 					</li>
 					<li>
-						<strong>Identity linking</strong>
-						<span>Emails, addresses, and cards resolve to the same person—not just one alias.</span>
+						<strong>Stop duplicate accounts</strong>
+						<span>Auto-group customers with multiple accounts—different emails, same person.</span>
 					</li>
 					<li>
-						<strong>Community protection</strong>
-						<span>Participating stores see shared risk signals before the next order ships.</span>
+						<strong>Shared network protection</strong>
+						<span>Any customer blocked on another store is flagged for you to review. Hold chargeback abusers before they hit you.</span>
 					</li>
 				</ol>
 			</div>
@@ -95,27 +95,33 @@ const jsonLd = [
 	<section class="section trust" aria-labelledby="trust-heading">
 		<div class="site-wrap trust__inner">
 			<img class="trust__mark" src="/logo-512.png" alt="" width="48" height="48" />
-			<span class="section-label">Built for Shopify merchants</span>
-			<h2 id="trust-heading" class="section-title">
-				Fraud prevention that fits how you already sell.
-			</h2>
+			<span class="section-label">From merchants on Shopify</span>
+			<blockquote class="trust__quote" id="trust-heading">
+				<p>
+					“Great experience for us so far. Filled a gap we had in our current tooling,
+					definitely a huge recommended essential item for back office, fraud prevention
+					for anyone. Part of my personal day 1 installs here now.”
+				</p>
+				<footer>
+					<cite>A Pup Above</cite>
+				</footer>
+			</blockquote>
 			<p class="section-lead">
-				Install from the Shopify App Store. Hold or block high-risk orders, discover your
-				worst customers, and auto-group multi-account abusers—without building a rules
-				lab.
+				Hold or auto-cancel high-risk orders, discover your worst customers, and auto-block
+				blacklisted shoppers—with a free plan and 30-day trial on paid plans.
 			</p>
 		</div>
 	</section>
 
 	<section class="section cta" aria-labelledby="cta-heading">
 		<div class="site-wrap cta__inner">
-			<h2 id="cta-heading" class="section-title">Start blocking smarter.</h2>
+			<h2 id="cta-heading" class="section-title">Block fraudsters once.</h2>
 			<p class="section-lead">
-				Join merchants using Blox to cut chargebacks and stop repeat offenders before
-				fulfillment.
+				Install Blox from the Shopify App Store and turn every block into shared
+				protection.
 			</p>
 			<a class="btn" href={appStoreUrl} rel="noopener noreferrer">
-				View Blox on the Shopify App Store
+				Install on Shopify
 			</a>
 		</div>
 	</section>
@@ -198,6 +204,29 @@ const jsonLd = [
 	.trust .section-lead {
 		margin-inline: auto;
 		text-align: center;
+	}
+
+	.trust__quote {
+		margin: 0 0 1.5rem;
+		max-width: 38rem;
+	}
+
+	.trust__quote p {
+		font-family: var(--font-display);
+		font-size: clamp(1.25rem, 2.6vw, 1.65rem);
+		font-weight: 600;
+		letter-spacing: -0.03em;
+		line-height: 1.35;
+	}
+
+	.trust__quote footer {
+		margin-top: 1rem;
+		color: var(--color-fg-muted);
+		font-size: 0.95rem;
+	}
+
+	.trust__quote cite {
+		font-style: normal;
 	}
 
 	.cta {
