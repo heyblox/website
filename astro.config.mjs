@@ -7,6 +7,6 @@ import sitemap from '@astrojs/sitemap';
 // When heyblox.com DNS points here at the domain root, change base to '/'.
 export default defineConfig({
 	site: 'https://heyblox.com',
-	base: '/website',
+	base: '/website/',
 	integrations: [sitemap()],
 });
