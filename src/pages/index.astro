@@ -1,0 +1,233 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+
+const appStoreUrl = 'https://apps.shopify.com/blocklist';
+
+const jsonLd = [
+	{
+		'@context': 'https://schema.org',
+		'@type': 'Organization',
+		name: 'Blox',
+		url: 'https://heyblox.com',
+		logo: 'https://heyblox.com/logo.png',
+		email: 'privacy@heyblox.com',
+	},
+	{
+		'@context': 'https://schema.org',
+		'@type': 'SoftwareApplication',
+		name: 'Blox: Chargeback Blacklist',
+		applicationCategory: 'BusinessApplication',
+		operatingSystem: 'Shopify',
+		url: 'https://heyblox.com',
+		downloadUrl: appStoreUrl,
+		offers: {
+			'@type': 'Offer',
+			price: '0',
+			priceCurrency: 'USD',
+		},
+		description:
+			'Community-powered Shopify blocklist with identity linking to stop chargebacks, return abuse, and repeat fraudsters.',
+	},
+];
+---
+
+<BaseLayout
+	title="Blox — Shopify Chargeback & Customer Blocklist"
+	description="Block fraudsters, chargeback abusers, and serial returners on Shopify. Blox links identities across emails, addresses, and cards—and shares protection across the merchant network."
+	canonicalPath="/"
+	jsonLd={jsonLd}
+>
+	<Hero />
+
+	<section class="section problem" aria-labelledby="problem-heading">
+		<div class="site-wrap">
+			<span class="section-label">The problem</span>
+			<h2 id="problem-heading" class="section-title">
+				A single-store blocklist is a revolving door.
+			</h2>
+			<p class="section-lead">
+				Bad actors rotate emails, shipping addresses, and cards. They hit one store, get
+				blocked, then show up somewhere else—or under a new account on yours. Local
+				rules alone can’t keep up.
+			</p>
+		</div>
+	</section>
+
+	<section class="section how" id="how-it-works" aria-labelledby="how-heading">
+		<div class="site-wrap how__grid">
+			<div class="how__copy">
+				<span class="section-label">How it works</span>
+				<h2 id="how-heading" class="section-title">
+					Link the person. Share the block.
+				</h2>
+				<p class="section-lead">
+					Blox connects customer identifiers into one identity—and turns every merchant
+					block into network-wide signal.
+				</p>
+				<ol class="how__steps">
+					<li>
+						<strong>Block once</strong>
+						<span>Flag a fraudster, chargeback abuser, or serial returner in your store.</span>
+					</li>
+					<li>
+						<strong>Identity linking</strong>
+						<span>Emails, addresses, and cards resolve to the same person—not just one alias.</span>
+					</li>
+					<li>
+						<strong>Community protection</strong>
+						<span>Participating stores see shared risk signals before the next order ships.</span>
+					</li>
+				</ol>
+			</div>
+			<figure class="how__visual">
+				<img
+					src="/identity-network.jpg"
+					alt="Network diagram showing Blox linking customer identities across emails, addresses, and accounts"
+					width="1536"
+					height="1024"
+					loading="lazy"
+				/>
+			</figure>
+		</div>
+	</section>
+
+	<section class="section trust" aria-labelledby="trust-heading">
+		<div class="site-wrap trust__inner">
+			<img class="trust__mark" src="/logo-512.png" alt="" width="48" height="48" />
+			<span class="section-label">Built for Shopify merchants</span>
+			<h2 id="trust-heading" class="section-title">
+				Fraud prevention that fits how you already sell.
+			</h2>
+			<p class="section-lead">
+				Install from the Shopify App Store. Hold or block high-risk orders, discover your
+				worst customers, and auto-group multi-account abusers—without building a rules
+				lab.
+			</p>
+		</div>
+	</section>
+
+	<section class="section cta" aria-labelledby="cta-heading">
+		<div class="site-wrap cta__inner">
+			<h2 id="cta-heading" class="section-title">Start blocking smarter.</h2>
+			<p class="section-lead">
+				Join merchants using Blox to cut chargebacks and stop repeat offenders before
+				fulfillment.
+			</p>
+			<a class="btn" href={appStoreUrl} rel="noopener noreferrer">
+				View Blox on the Shopify App Store
+			</a>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.problem {
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.how {
+		border-bottom: 1px solid var(--color-border);
+		background: linear-gradient(180deg, var(--color-bg) 0%, #090909 100%);
+	}
+
+	.how__grid {
+		display: grid;
+		gap: 2.5rem;
+		align-items: center;
+	}
+
+	.how__steps {
+		list-style: none;
+		margin: 2rem 0 0;
+		padding: 0;
+		display: grid;
+		gap: 1.25rem;
+	}
+
+	.how__steps li {
+		display: grid;
+		gap: 0.35rem;
+		padding-left: 1rem;
+		border-left: 2px solid var(--color-red);
+	}
+
+	.how__steps strong {
+		font-family: var(--font-display);
+		font-size: 1.05rem;
+		letter-spacing: -0.02em;
+	}
+
+	.how__steps span {
+		color: var(--color-fg-muted);
+	}
+
+	.how__visual {
+		margin: 0;
+		border: 1px solid var(--color-border);
+		overflow: hidden;
+		background: #000;
+	}
+
+	.how__visual img {
+		width: 100%;
+		height: auto;
+		opacity: 0.95;
+	}
+
+	.trust {
+		border-bottom: 1px solid var(--color-border);
+		text-align: center;
+	}
+
+	.trust__inner {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.trust__mark {
+		width: 3rem;
+		height: 3rem;
+		border-radius: 50%;
+		border: 1px solid var(--color-ring);
+		margin-bottom: 1.25rem;
+	}
+
+	.trust .section-title,
+	.trust .section-lead {
+		margin-inline: auto;
+		text-align: center;
+	}
+
+	.cta {
+		padding-block: 6rem;
+		text-align: center;
+		background:
+			radial-gradient(ellipse 55% 70% at 50% 100%, rgba(252, 0, 0, 0.16), transparent 65%),
+			var(--color-bg);
+	}
+
+	.cta__inner {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0;
+	}
+
+	.cta .section-title {
+		max-width: 12ch;
+	}
+
+	.cta .section-lead {
+		margin-bottom: 1.75rem;
+		text-align: center;
+	}
+
+	@media (min-width: 900px) {
+		.how__grid {
+			grid-template-columns: 1fr 1.05fr;
+			gap: 3.5rem;
+		}
+	}
+</style>
