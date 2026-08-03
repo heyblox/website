@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const published = (await getCollection('guides')).filter((g) => !g.data.draft);
+---
+
+<BaseLayout
+	title="Guides"
+	description="Practical guides on Shopify chargebacks, return abuse, and community blocklists from Blox."
+	canonicalPath="/guides/"
+>
+	<section class="section guides">
+		<div class="site-wrap">
+			<span class="section-label">Guides</span>
+			<h1 class="section-title">Coming soon</h1>
+			<p class="section-lead">
+				We’re preparing merchant guides on chargebacks, return abuse, and identity-linked
+				blocklists. Check back soon—or install Blox on Shopify today.
+			</p>
+			{
+				published.length > 0 && (
+					<ul class="guide-list">
+						{published.map((guide) => (
+							<li>
+								<a href={`/guides/${guide.id}/`}>{guide.data.title}</a>
+								<p>{guide.data.description}</p>
+							</li>
+						))}
+					</ul>
+				)
+			}
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.guides {
+		padding-top: 4rem;
+		min-height: 50vh;
+	}
+
+	.guide-list {
+		margin: 2.5rem 0 0;
+		padding: 0;
+		list-style: none;
+		display: grid;
+		gap: 1.5rem;
+	}
+
+	.guide-list a {
+		font-family: var(--font-display);
+		font-size: 1.25rem;
+		font-weight: 600;
+		text-decoration: none;
+	}
+
+	.guide-list p {
+		margin-top: 0.35rem;
+		color: var(--color-fg-muted);
+	}
+</style>
