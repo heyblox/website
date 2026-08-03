@@ -3,33 +3,37 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { withBase } from '../../lib/urls';
 
-const published = (await getCollection('guides')).filter((g) => !g.data.draft);
+const published = (await getCollection('guides', ({ data }) => !data.draft)).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
 ---
 
 <BaseLayout
-	title="Guides"
-	description="Practical guides on Shopify chargebacks, return abuse, and community blocklists from Blox."
+	title="Guides — Shopify chargebacks, blocklists & fraud prevention"
+	description="Practical Blox guides on blocking repeat chargeback customers, serial returners, refund abuse, and when to use a blocklist vs a fraud filter."
 >
 	<section class="section guides">
 		<div class="site-wrap">
 			<span class="section-label">Guides</span>
-			<h1 class="section-title">Coming soon</h1>
+			<h1 class="section-title">Fraud prevention playbooks</h1>
 			<p class="section-lead">
-				We’re preparing merchant guides on chargebacks, return abuse, and identity-linked
-				blocklists. Check back soon—or install Blox on Shopify today.
+				How Shopify merchants use blocklists to stop chargebacks, serial returners, and
+				refund abuse—plus when a fraud filter is the better fit.
 			</p>
-			{
-				published.length > 0 && (
-					<ul class="guide-list">
-						{published.map((guide) => (
-							<li>
-								<a href={withBase(`guides/${guide.id}/`)}>{guide.data.title}</a>
-								<p>{guide.data.description}</p>
-							</li>
-						))}
-					</ul>
-				)
-			}
+			<ul class="guide-list">
+				{
+					published.map((guide) => (
+						<li>
+							<a href={withBase(`guides/${guide.id}/`)}>{guide.data.title}</a>
+							<p>{guide.data.description}</p>
+						</li>
+					))
+				}
+			</ul>
+			<p class="guides__compare">
+				Also see:
+				<a href={withBase('compare/blox-vs-blockify/')}>Blox vs Blockify</a>
+			</p>
 		</div>
 	</section>
 </BaseLayout>
@@ -58,5 +62,20 @@ const published = (await getCollection('guides')).filter((g) => !g.data.draft);
 	.guide-list p {
 		margin-top: 0.35rem;
 		color: var(--color-fg-muted);
+	}
+
+	.guides__compare {
+		margin-top: 2.5rem;
+		color: var(--color-fg-muted);
+		font-size: 0.95rem;
+	}
+
+	.guides__compare a {
+		color: var(--color-fg);
+		text-decoration: none;
+	}
+
+	.guides__compare a:hover {
+		color: var(--color-red);
 	}
 </style>

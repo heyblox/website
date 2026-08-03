@@ -1,0 +1,135 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../lib/urls';
+
+interface Props {
+	title: string;
+	description: string;
+	pubDate: Date;
+}
+
+const { title, description, pubDate } = Astro.props;
+const formatted = pubDate.toLocaleDateString('en-US', {
+	year: 'numeric',
+	month: 'long',
+	day: 'numeric',
+});
+const appStoreUrl = 'https://apps.shopify.com/blocklist';
+---
+
+<BaseLayout title={title} description={description}>
+	<article class="section guide">
+		<div class="site-wrap guide__wrap">
+			<p class="guide__crumb">
+				<a href={withBase('guides/')}>Guides</a>
+			</p>
+			<span class="section-label">Guide</span>
+			<h1>{title}</h1>
+			<p class="guide__meta">
+				<time datetime={pubDate.toISOString()}>{formatted}</time>
+			</p>
+			<div class="guide__body">
+				<slot />
+			</div>
+			<p class="guide__cta">
+				<a class="btn" href={appStoreUrl} rel="noopener noreferrer">Install Blox on Shopify</a>
+			</p>
+		</div>
+	</article>
+</BaseLayout>
+
+<style is:global>
+	.guide {
+		padding-top: 3rem;
+		padding-bottom: 5rem;
+	}
+
+	.guide__wrap {
+		max-width: 46rem;
+	}
+
+	.guide__crumb {
+		margin-bottom: 1.25rem;
+		font-size: 0.9rem;
+	}
+
+	.guide__crumb a {
+		color: var(--color-fg-muted);
+		text-decoration: none;
+	}
+
+	.guide__crumb a:hover {
+		color: var(--color-fg);
+	}
+
+	.guide h1 {
+		font-size: clamp(2rem, 4vw, 2.75rem);
+		max-width: 20ch;
+		margin-bottom: 0.75rem;
+	}
+
+	.guide__meta {
+		color: var(--color-fg-muted);
+		font-size: 0.95rem;
+		margin-bottom: 2.25rem;
+	}
+
+	.guide__body h2 {
+		margin: 2.5rem 0 0.85rem;
+		font-size: 1.35rem;
+	}
+
+	.guide__body h3 {
+		margin: 1.75rem 0 0.65rem;
+		font-size: 1.1rem;
+	}
+
+	.guide__body p {
+		margin: 0.85rem 0;
+		color: var(--color-fg-muted);
+	}
+
+	.guide__body ul,
+	.guide__body ol {
+		margin: 0.75rem 0 1rem;
+		padding-left: 1.25rem;
+		color: var(--color-fg-muted);
+	}
+
+	.guide__body li {
+		margin: 0.4rem 0;
+	}
+
+	.guide__body a {
+		color: var(--color-fg);
+	}
+
+	.guide__body strong {
+		color: var(--color-fg);
+	}
+
+	.guide__body table {
+		width: 100%;
+		border-collapse: collapse;
+		margin: 1.25rem 0;
+		font-size: 0.95rem;
+	}
+
+	.guide__body th,
+	.guide__body td {
+		border: 1px solid var(--color-border);
+		padding: 0.7rem 0.85rem;
+		text-align: left;
+		vertical-align: top;
+	}
+
+	.guide__body th {
+		background: var(--color-bg-elevated);
+		color: var(--color-fg);
+		font-family: var(--font-display);
+	}
+
+	.guide__cta {
+		margin-top: 2.75rem;
+	}
+</style>
