@@ -8,6 +8,10 @@ astro dev --background
 
 Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
 
+## Published content
+
+Never put AI instructions, authoring checklists, or distribution notes into visitor-facing pages or guides. Operational notes belong in README, PRs, chat, or `draft: true` content only.
+
 ## Documentation
 
 Full documentation: https://docs.astro.build

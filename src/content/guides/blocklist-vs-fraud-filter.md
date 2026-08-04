@@ -62,5 +62,3 @@ If your only tool is scoring, repeat offenders will keep resetting the game. If 
 ## Next step
 
 If your pain is repeat chargebacks and refund abuse (not just bots), start with a blocklist. [Install Blox on Shopify](https://apps.shopify.com/blocklist).
-
-After you publish, share this post in Shopify community forums where merchants ask about chargebacks and fraud apps. That’s where head-to-head “blocklist vs filter” questions already show up.
