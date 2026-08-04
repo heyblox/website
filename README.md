@@ -24,7 +24,7 @@ In the repo: **Settings → Pages → Build and deployment → Source: GitHub Ac
 
 Custom domain is set via [`public/CNAME`](public/CNAME) (`heyblox.com`).
 
-This is a **project site**, so the GitHub preview URL is `https://heyblox.github.io/website/`. Astro `base` is set to `/website` for that path. **Before relying on `heyblox.com` at the domain root**, set `base: '/'` in [`astro.config.mjs`](astro.config.mjs) and redeploy so asset URLs are root-absolute.
+Astro `base` is `/` so the site works at the apex domain root after DNS cutover. The project preview URL `https://heyblox.github.io/website/` will not style correctly while `base` is `/`; use `heyblox.com` (or local `npm run preview`) once DNS is pointed here.
 
 ## DNS cutover (from Webflow)
 
