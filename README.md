@@ -1,6 +1,6 @@
 # heyblox.com
 
-Marketing site for **Blox** — Shopify chargeback / customer blocklist. Built with [Astro](https://astro.build) and deployed to GitHub Pages.
+Marketing site for **Blox**, Shopify chargeback / customer blocklist. Built with [Astro](https://astro.build) and deployed to GitHub Pages.
 
 ## Local development
 

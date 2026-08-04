@@ -5,7 +5,7 @@ pubDate: 2026-08-03
 draft: false
 ---
 
-Chargebacks and refund abuse drain margin long after an order looks “successful.” If the same shopper—or the same person behind new emails—keeps hitting your store, you need a **fraud prevention** workflow that blocks the *customer*, not just one order.
+Chargebacks and refund abuse drain margin long after an order looks “successful.” If the same shopper, or the same person behind new emails, keeps hitting your store, you need a **fraud prevention** workflow that blocks the *customer*, not just one order.
 
 This guide shows how to use [Blox](https://apps.shopify.com/blocklist) to stop **repeat chargeback** customers and related abuse on Shopify.
 
@@ -30,7 +30,7 @@ Local rules that only match one email or card miss the person. Blox is built aro
 When you confirm a bad actor:
 
 1. Find the customer or order in Shopify / Blox.
-2. **Block** them in Blox (by email, phone, address, or payment—whichever you have).
+2. **Block** them in Blox (by email, phone, address, or payment, whichever you have).
 3. Prefer blocking the *person* early rather than waiting for another paid order to cancel after the fact.
 
 Blocking contributes to the community blocklist so other stores can see shared risk when the same identity appears.
@@ -40,7 +40,7 @@ Blocking contributes to the community blocklist so other stores can see shared r
 For high-risk matches (including customers blocked elsewhere):
 
 - **Hold** the order for review when you want a human check.
-- **Auto-cancel** high-risk orders before fulfillment when your policy allows it—so you don’t ship into a known chargeback or abuse pattern.
+- **Auto-cancel** high-risk orders before fulfillment when your policy allows it, so you don’t ship into a known chargeback or abuse pattern.
 
 Exact automation depends on your Blox settings and plan. The goal is the same: stop loss **before** the package leaves, not after the dispute.
 
@@ -50,7 +50,7 @@ Repeat offenders often rotate emails. Use Blox’s customer clustering / dedupli
 
 ## Step 5: Review network flags
 
-When another merchant blocks someone who later shops with you, treat that as a signal to review—especially for chargeback history, return abuse, or refund abuse. You decide whether to hold, cancel, or proceed.
+When another merchant blocks someone who later shops with you, treat that as a signal to review, especially for chargeback history, return abuse, or refund abuse. You decide whether to hold, cancel, or proceed.
 
 ## Checklist
 
