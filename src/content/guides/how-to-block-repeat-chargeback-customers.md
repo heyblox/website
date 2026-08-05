@@ -17,20 +17,20 @@ Merchants usually see some mix of:
 - A **serial returner** who cycles products with a high refund rate
 - A **refund abuser** pattern: discounts, “item not received,” or friendly fraud signals across accounts
 
-Local rules that only match one email or card miss the person. Blox is built around a **blocklist-first** model: you block once, identifiers are grouped, and other merchants’ blocks can flag risk on your store.
+Local rules that only match one email or card miss the person. Blox is built around a **blocklist-first** model: identifiers are grouped into one profile automatically, you block once, and other merchants’ blocks can flag risk on your store.
 
 ## Step 1: Install Blox on Shopify
 
 1. Open [Blox: Chargeback Blacklist](https://apps.shopify.com/blocklist) in the Shopify App Store.
 2. Install on your store (free plan available; paid plans include a trial).
-3. Confirm the app can view the customer and order data it needs to match and act on risk.
+3. Blox starts grouping your customers into unified profiles right away. There is no matching logic to configure.
 
 ## Step 2: Block the customer who charged back
 
 When you confirm a bad actor:
 
-1. Find the customer or order in Shopify / Blox.
-2. **Block** them in Blox (by email, phone, address, or payment, whichever you have).
+1. Search any identifier you already have: an email, a phone number, an address. Any one of them finds the profile.
+2. **Block** the customer. The ban covers every account and identifier linked to that person.
 3. Prefer blocking the *person* early rather than waiting for another paid order to cancel after the fact.
 
 Blocking contributes to the community blocklist so other stores can see shared risk when the same identity appears.
@@ -44,9 +44,9 @@ For high-risk matches (including customers blocked elsewhere):
 
 Exact automation depends on your Blox settings and plan. The goal is the same: stop loss **before** the package leaves, not after the dispute.
 
-## Step 4: Catch duplicate accounts
+## Step 4: Duplicate accounts, handled automatically
 
-Repeat offenders often rotate emails. Use Blox’s customer clustering / deduplication so multiple accounts resolve to one identity. When you block one alias, related accounts are easier to spot next time.
+Repeat offenders rotate emails. Blox links those accounts into a single identity on its own, so blocking one alias blocks the rest. You do not have to hunt for the duplicates or merge anything by hand.
 
 ## Step 5: Review network flags
 
@@ -54,10 +54,9 @@ When another merchant blocks someone who later shops with you, treat that as a s
 
 ## Checklist
 
-- [ ] Blox installed and connected
+- [ ] Blox installed
 - [ ] Known chargeback / abuse customers blocked
 - [ ] Hold or auto-cancel rules set for high-risk matches
-- [ ] Duplicate-account grouping understood by your team
 - [ ] Staff know to block on confirmed abuse, not only on gut feel
 
 ## When a blocklist beats a fraud score

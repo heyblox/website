@@ -30,7 +30,7 @@ A blocklist is **fraud prevention by memory**:
 - You want holds or cancels **before fulfillment**
 - You’re fighting **refund abuse**, repeat chargebacks, and multi-account hopping
 
-[Blox](https://apps.shopify.com/blocklist) is blocklist-first: block by email, phone, address, or payment; deduplicate accounts; share signals across participating stores. Simple rules, not an opaque AI score as the primary control.
+[Blox](https://apps.shopify.com/blocklist) is blocklist-first: accounts are deduplicated into one customer profile automatically, so blocking by email, phone, address, or payment blocks the person, and that decision is shared across participating stores. Simple rules, not an opaque AI score as the primary control.
 
 ## When to use each
 
