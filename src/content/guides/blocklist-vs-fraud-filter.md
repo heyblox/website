@@ -56,6 +56,7 @@ If your only tool is scoring, repeat offenders will keep resetting the game. If 
 
 ## Related reading
 
+- [How to block a customer on Shopify](../how-to-block-a-customer-on-shopify/)
 - [How to block repeat chargeback customers with Blox](../how-to-block-repeat-chargeback-customers/)
 - [Blox vs Blockify: blocklist-first vs fraud scoring](../../compare/blox-vs-blockify/)
 
