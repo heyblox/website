@@ -1,0 +1,33 @@
+---
+import { LEGACY_WEBSITE_PATHS } from '../../lib/legacyWebsitePaths';
+
+export function getStaticPaths() {
+	return [
+		{ params: { slug: undefined } },
+		...LEGACY_WEBSITE_PATHS.map((slug) => ({ params: { slug } })),
+	];
+}
+
+const slug = Astro.params.slug;
+const destinationPath = slug ? `/${slug}/` : '/';
+const destinationUrl = new URL(destinationPath, Astro.site ?? 'https://heyblox.com').href;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Redirecting to {destinationUrl}</title>
+		<link rel="canonical" href={destinationUrl} />
+		<meta http-equiv="refresh" content={`0;url=${destinationPath}`} />
+		<script is:inline define:vars={{ destinationPath }}>
+			location.replace(destinationPath);
+		</script>
+	</head>
+	<body>
+		<p>
+			This page has moved to <a href={destinationPath}>{destinationUrl}</a>.
+		</p>
+	</body>
+</html>

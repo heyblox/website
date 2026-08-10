@@ -7,5 +7,11 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
 	site: 'https://heyblox.com',
 	base: '/',
-	integrations: [sitemap()],
+	trailingSlash: 'always',
+	integrations: [
+		sitemap({
+			// Legacy /website/* cutover redirects must not appear in the sitemap.
+			filter: (page) => !new URL(page).pathname.startsWith('/website'),
+		}),
+	],
 });

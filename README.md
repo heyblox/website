@@ -24,7 +24,7 @@ In the repo: **Settings → Pages → Build and deployment → Source: GitHub Ac
 
 Custom domain is set via [`public/CNAME`](public/CNAME) (`heyblox.com`).
 
-Astro `base` is `/` so the site works at the apex domain root after DNS cutover. The project preview URL `https://heyblox.github.io/website/` will not style correctly while `base` is `/`; use `heyblox.com` (or local `npm run preview`) once DNS is pointed here.
+Astro `base` is `/` so the site works at the apex domain root after DNS cutover. Legacy `/website/*` URLs from the project-pages base path redirect to the root equivalents. The project preview URL `https://heyblox.github.io/website/` will not style correctly while `base` is `/`; use `heyblox.com` (or local `npm run preview`) once DNS is pointed here.
 
 ## DNS cutover (from Webflow)
 

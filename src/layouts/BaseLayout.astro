@@ -10,18 +10,25 @@ interface Props {
 	canonicalPath?: string;
 	ogImage?: string;
 	jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+	noindex?: boolean;
 }
 
 const {
 	title,
 	description,
-	canonicalPath = Astro.url.pathname,
+	canonicalPath,
 	ogImage = 'logo.png',
 	jsonLd,
+	noindex = false,
 } = Astro.props;
 
 const site = Astro.site ?? new URL('https://heyblox.com');
-const canonical = new URL(canonicalPath, site).href;
+const pathForCanonical = canonicalPath ?? Astro.url.pathname;
+const normalizedPath = pathForCanonical.endsWith('/') ? pathForCanonical : `${pathForCanonical}/`;
+const canonical =
+	noindex && canonicalPath === undefined
+		? undefined
+		: new URL(normalizedPath === '//' ? '/' : normalizedPath, site).href;
 const ogImageUrl = new URL(withBase(ogImage), site).href;
 const fullTitle = title.includes('Blox') ? title : `${title} | Blox`;
 ---
@@ -41,14 +48,15 @@ const fullTitle = title.includes('Blox') ? title : `${title} | Blox`;
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>{fullTitle}</title>
 		<meta name="description" content={description} />
-		<link rel="canonical" href={canonical} />
+		{noindex && <meta name="robots" content="noindex, follow" />}
+		{canonical && <link rel="canonical" href={canonical} />}
 		<meta name="generator" content={Astro.generator} />
 
 		<meta property="og:type" content="website" />
 		<meta property="og:site_name" content="Blox" />
 		<meta property="og:title" content={fullTitle} />
 		<meta property="og:description" content={description} />
-		<meta property="og:url" content={canonical} />
+		{canonical && <meta property="og:url" content={canonical} />}
 		<meta property="og:image" content={ogImageUrl} />
 
 		<meta name="twitter:card" content="summary" />
