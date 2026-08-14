@@ -11,7 +11,11 @@ export default defineConfig({
 	integrations: [
 		sitemap({
 			// Legacy /website/* cutover redirects must not appear in the sitemap.
-			filter: (page) => !new URL(page).pathname.startsWith('/website'),
+			// /docs/* pages are unlisted support references and are noindex.
+			filter: (page) => {
+				const { pathname } = new URL(page);
+				return !pathname.startsWith('/website') && !pathname.startsWith('/docs');
+			},
 		}),
 	],
 });

@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'Why Blox held an order instead of cancelling it';
+const description =
+	'Blox holds an order for review when it has already cancelled several orders for the same customer recently.';
+---
+
+<BaseLayout title={title} description={description} noindex>
+	<article class="doc section">
+		<div class="site-wrap doc__wrap">
+			<span class="section-label">Docs</span>
+			<h1>{title}</h1>
+			<div class="doc__body">
+				<p>
+					Blox had already cancelled several orders for this customer in a short time. That’s
+					unusual, so it held this order for you to review rather than cancelling and refunding
+					another one.
+				</p>
+				<p>
+					A run of cancellations sometimes means more than one shopper has ended up under a single
+					customer profile. Cancelling can’t be undone. A hold can, so the decision is left to you.
+				</p>
+				<p>Either way the order is stopped, and nothing ships until you decide.</p>
+
+				<h2>What to do</h2>
+				<p>
+					Open the customer from the link in your notification and review the orders under that
+					profile.
+				</p>
+				<ul>
+					<li><strong>One person, correctly blocked</strong> — cancel the held order.</li>
+					<li>
+						<strong>More than one shopper grouped together</strong> — release the hold and let us
+						know at <a href="mailto:hello@heyblox.com">hello@heyblox.com</a>.
+					</li>
+				</ul>
+				<p>
+					Blox resumes cancelling on its own once those earlier cancellations are more than 24 hours
+					old.
+				</p>
+				<p>
+					Questions, or a profile that has grouped the wrong people? Email
+					<a href="mailto:hello@heyblox.com">hello@heyblox.com</a>.
+				</p>
+			</div>
+		</div>
+	</article>
+</BaseLayout>
+
+<style>
+	.doc {
+		padding-top: 3.5rem;
+		padding-bottom: 5rem;
+	}
+
+	.doc__wrap {
+		max-width: 46rem;
+	}
+
+	.doc h1 {
+		font-size: clamp(2rem, 4vw, 2.75rem);
+		margin-bottom: 2.25rem;
+	}
+
+	.doc__body h2 {
+		margin: 2.5rem 0 0.85rem;
+		font-size: 1.35rem;
+	}
+
+	.doc__body p {
+		margin: 0.85rem 0;
+		color: var(--color-fg-muted);
+	}
+
+	.doc__body ul {
+		margin: 0.75rem 0 1rem;
+		padding-left: 1.25rem;
+		color: var(--color-fg-muted);
+	}
+
+	.doc__body li {
+		margin: 0.4rem 0;
+	}
+
+	.doc__body a {
+		color: var(--color-fg);
+	}
+
+	.doc__body strong {
+		color: var(--color-fg);
+		font-weight: 600;
+	}
+</style>
