@@ -7,12 +7,13 @@ interface Props {
 	heading: string;
 	effectiveDate: string;
 	lastUpdated?: string;
+	noindex?: boolean;
 }
 
-const { title, description, heading, effectiveDate, lastUpdated } = Astro.props;
+const { title, description, heading, effectiveDate, lastUpdated, noindex = false } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} noindex={noindex}>
 	<article class="legal section">
 		<div class="site-wrap legal__wrap">
 			<span class="section-label">Legal</span>
