@@ -63,7 +63,7 @@ When another merchant blocks someone who later shops with you, treat that as a s
 
 Scores and filters are useful for “how risky is this checkout?” A **blocklist** answers “have we (or the network) already decided this customer is not welcome?” For repeat chargebacks and serial returners, that second question is usually the one that protects profit.
 
-For a deeper comparison, read [How to block a customer on Shopify](../how-to-block-a-customer-on-shopify/), [Blocklist vs fraud filter: when to use each](../blocklist-vs-fraud-filter/), [Blox vs NoFraud, Signifyd, and Blockify](../../compare/), and [Blox vs Blockify](../../compare/blox-vs-blockify/).
+For a deeper comparison, read [How to block a customer on Shopify](../how-to-block-a-customer-on-shopify/), [Blocklist vs fraud filter: when to use each](../blocklist-vs-fraud-filter/), [FAQ: Shopify fraud, chargebacks, and blocklists](../../faq/), [Blox vs NoFraud, Signifyd, and Blockify](../../compare/), and [Blox vs Blockify](../../compare/blox-vs-blockify/).
 
 ## Next step
 

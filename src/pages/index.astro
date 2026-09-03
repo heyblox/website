@@ -67,6 +67,8 @@ const jsonLd = [
 				</p>
 				<p class="how__more">
 					<a href={withBase('compare/')}>Blox vs NoFraud, Signifyd, and Blockify</a>
+					<span aria-hidden="true">·</span>
+					<a href={withBase('faq/')}>FAQ</a>
 				</p>
 				<ol class="how__steps">
 					<li>
@@ -148,6 +150,11 @@ const jsonLd = [
 	}
 
 	.how__more {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		column-gap: 1.25rem;
+		row-gap: 0.5rem;
 		margin-top: 1.25rem;
 		font-size: 0.95rem;
 	}

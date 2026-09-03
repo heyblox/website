@@ -78,21 +78,13 @@ const appStoreUrl = 'https://apps.shopify.com/blocklist';
 		</div>
 	</section>
 
-	<section class="compare__block" aria-labelledby="faq">
-		<h2 id="faq">FAQ</h2>
-		<h3>Can Blox automatically cancel orders from blocked customers?</h3>
-		<p>
-			<strong>Yes.</strong> Blox cancels or holds high-risk orders before fulfillment,
-			including customers who match your blocklist or network risk signals, so you aren’t
-			shipping into known abuse. Set holds vs auto-cancels to match your risk tolerance.
-		</p>
-	</section>
-
 	<p class="compare__cta">
 		<a class="btn" href={appStoreUrl} rel="noopener noreferrer">Install Blox on Shopify</a>
 	</p>
 	<p class="compare__more">
 		<a href={withBase('compare/')}>Blox vs NoFraud, Signifyd, and Blockify</a>
+		<span aria-hidden="true">·</span>
+		<a href={withBase('faq/')}>FAQ</a>
 		<span aria-hidden="true">·</span>
 		<a href={withBase('guides/how-to-block-repeat-chargeback-customers/')}>How to block repeat chargeback customers</a>
 		<span aria-hidden="true">·</span>
