@@ -65,6 +65,9 @@ const jsonLd = [
 					When one store flags fraud, all stores are protected. Customers are
 					deduplicated. Simple rules. No AI black box. No per-transaction fees.
 				</p>
+				<p class="how__more">
+					<a href={withBase('compare/')}>Blox vs NoFraud, Signifyd, and Blockify</a>
+				</p>
 				<ol class="how__steps">
 					<li>
 						<strong>Block by email, phone, address, or payment</strong>
@@ -109,9 +112,7 @@ const jsonLd = [
 				blacklisted shoppers, with a free plan and 30-day trial on paid plans.
 			</p>
 			<p class="trust__more">
-				<a href={withBase('guides/how-to-block-a-customer-on-shopify/')}>
-					How to block a customer on Shopify
-				</a>
+				<a href={withBase('guides/how-to-block-a-customer-on-shopify/')}>How to block a customer on Shopify</a>
 			</p>
 		</div>
 	</section>
@@ -144,6 +145,22 @@ const jsonLd = [
 		display: grid;
 		gap: 2.5rem;
 		align-items: center;
+	}
+
+	.how__more {
+		margin-top: 1.25rem;
+		font-size: 0.95rem;
+	}
+
+	.how__more a {
+		color: var(--color-fg);
+		text-decoration: none;
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.how__more a:hover {
+		color: var(--color-red);
+		border-color: var(--color-red);
 	}
 
 	.how__steps {

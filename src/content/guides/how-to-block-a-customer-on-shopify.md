@@ -84,6 +84,7 @@ Use native tools for process and documentation. Use a blocklist when you need th
 
 - [How to block repeat chargeback customers with Blox](../how-to-block-repeat-chargeback-customers/)
 - [Blocklist vs fraud filter: when to use each](../blocklist-vs-fraud-filter/)
+- [Blox vs NoFraud, Signifyd, and Blockify](../../compare/)
 - [Blox vs Blockify: blocklist-first vs fraud scoring](../../compare/blox-vs-blockify/)
 
 ## Next step
