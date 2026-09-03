@@ -42,7 +42,13 @@ const enableAnalytics = import.meta.env.PROD;
 				<script is:inline>
 					(function () {
 						var host = location.hostname;
-						if (host === 'localhost' || host === '127.0.0.1' || host === '[::1]' || host === '') {
+						if (
+							host === 'localhost' ||
+							host === '127.0.0.1' ||
+							host === '::1' ||
+							host === '[::1]' ||
+							host === ''
+						) {
 							return;
 						}
 						window.dataLayer = window.dataLayer || [];
