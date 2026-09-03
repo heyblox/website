@@ -1,0 +1,189 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+	title: string;
+	description: string;
+	jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+	wide?: boolean;
+}
+
+const { title, description, jsonLd, wide = false } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} jsonLd={jsonLd}>
+	<article class="section compare">
+		<div class:list={['site-wrap', 'compare__wrap', wide && 'compare__wrap--wide']}>
+			<slot />
+		</div>
+	</article>
+</BaseLayout>
+
+<style is:global>
+	.compare {
+		padding-top: 3.5rem;
+		padding-bottom: 5rem;
+	}
+
+	.compare__wrap {
+		max-width: 46rem;
+	}
+
+	.compare__wrap--wide {
+		max-width: 54rem;
+	}
+
+	.compare__wrap--wide table {
+		font-size: 0.88rem;
+	}
+
+	.compare__wrap--wide th,
+	.compare__wrap--wide td {
+		padding: 0.75rem 0.85rem;
+	}
+
+	.compare h1 {
+		font-size: clamp(2rem, 4vw, 2.85rem);
+		max-width: 22ch;
+		margin-bottom: 1rem;
+	}
+
+	.compare .section-label {
+		margin-bottom: 1rem;
+	}
+
+	.compare .section-lead {
+		margin-top: 0;
+	}
+
+	.compare__jump {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.65rem 1.1rem;
+		margin: 1.5rem 0 0;
+		padding: 0;
+		list-style: none;
+		font-size: 0.95rem;
+	}
+
+	.compare__jump a {
+		color: var(--color-fg);
+		text-decoration: none;
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.compare__jump a:hover {
+		color: var(--color-red);
+		border-color: var(--color-red);
+	}
+
+	.compare__block {
+		margin-top: 2.75rem;
+	}
+
+	.compare__block h2 {
+		font-size: 1.45rem;
+		margin-bottom: 0.85rem;
+	}
+
+	.compare__block h3 {
+		font-size: 1.1rem;
+		margin: 1.5rem 0 0.55rem;
+	}
+
+	.compare__block p,
+	.compare__block li {
+		color: var(--color-fg-muted);
+	}
+
+	.compare__block p {
+		margin: 0.85rem 0;
+	}
+
+	.compare__block ul,
+	.compare__block ol {
+		margin: 0.75rem 0 0;
+		padding-left: 1.2rem;
+	}
+
+	.compare__block li {
+		margin: 0.55rem 0;
+	}
+
+	.compare__block strong {
+		color: var(--color-fg);
+	}
+
+	.compare__block a {
+		color: var(--color-fg);
+	}
+
+	.compare__table-wrap {
+		overflow-x: auto;
+		margin-top: 1rem;
+		border: 1px solid var(--color-border);
+	}
+
+	.compare table {
+		width: 100%;
+		border-collapse: collapse;
+		font-size: 0.95rem;
+	}
+
+	.compare th,
+	.compare td {
+		padding: 0.85rem 1rem;
+		text-align: left;
+		vertical-align: top;
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.compare thead th {
+		font-family: var(--font-display);
+		font-size: 0.85rem;
+		letter-spacing: -0.02em;
+		background: var(--color-bg-elevated);
+	}
+
+	.compare tbody th {
+		font-weight: 600;
+		color: var(--color-fg);
+		background: transparent;
+	}
+
+	.compare td {
+		color: var(--color-fg-muted);
+	}
+
+	.compare td:nth-child(2) {
+		color: var(--color-fg);
+	}
+
+	.compare tr:last-child td {
+		border-bottom: 0;
+	}
+
+	.compare__cta {
+		margin-top: 2.5rem;
+	}
+
+	.compare__more {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		column-gap: 1.25rem;
+		row-gap: 0.5rem;
+		margin-top: 1.25rem;
+		color: var(--color-fg-muted);
+		font-size: 0.95rem;
+	}
+
+	.compare__more a {
+		color: var(--color-fg);
+		text-decoration: none;
+	}
+
+	.compare__more a:hover {
+		color: var(--color-red);
+	}
+</style>

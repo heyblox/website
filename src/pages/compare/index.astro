@@ -1,0 +1,271 @@
+---
+import CompareLayout from '../../layouts/CompareLayout.astro';
+import { withBase } from '../../lib/urls';
+
+const appStoreUrl = 'https://apps.shopify.com/blocklist';
+const pageUrl = 'https://heyblox.com/compare/';
+const title = 'Blox vs NoFraud, Signifyd, and Blockify';
+const description =
+	'Compare Blox to NoFraud, Signifyd, and Blockify: no per-transaction fees, no AI black box, and a community customer blocklist for Shopify fraud prevention.';
+
+const faqs = [
+	{
+		question: 'Does Blox charge per-transaction fees like NoFraud?',
+		answer:
+			'No. Blox is a flat monthly Shopify app subscription. There are no per-transaction fees and no percentage of revenue charged for using the blocklist.',
+	},
+	{
+		question: 'Is Blox an AI fraud scoring tool like Signifyd?',
+		answer:
+			'No. Blox is blocklist-first. You block customers with simple rules you control. There is no AI black box scoring each checkout as the primary control.',
+	},
+	{
+		question: 'How is Blox different from Blockify?',
+		answer:
+			'Blockify is typically used as an IP, bot, and country fraud filter. Blox is a community customer blocklist with automatic identity linking, so a block follows the person across emails, accounts, and participating stores.',
+	},
+	{
+		question: 'Can Blox replace a chargeback guarantee from NoFraud or Signifyd?',
+		answer:
+			'No. A guarantee reimburses eligible chargebacks on orders the provider approved. Blox stops known abusers before fulfillment. Many stores use both: a guarantee for unknown traffic, and a blocklist for repeat offenders.',
+	},
+	{
+		question: 'Does Blox have a community blocklist?',
+		answer:
+			'Yes. When one store flags fraud, other participating stores can be protected. Network matches are flagged for you to review, hold, or auto-cancel before fulfillment.',
+	},
+	{
+		question: 'Can Blox automatically cancel orders from blocked customers?',
+		answer:
+			'Yes. Blox cancels or holds high-risk orders before fulfillment, including customers who match your blocklist or network risk signals. Set holds vs auto-cancels to match your risk tolerance.',
+	},
+];
+
+const jsonLd = [
+	{
+		'@context': 'https://schema.org',
+		'@type': 'WebPage',
+		name: title,
+		description,
+		url: pageUrl,
+		isPartOf: {
+			'@type': 'WebSite',
+			name: 'Blox',
+			url: 'https://heyblox.com',
+		},
+		about: {
+			'@type': 'SoftwareApplication',
+			name: 'Blox: Chargeback Blacklist',
+			applicationCategory: 'BusinessApplication',
+			operatingSystem: 'Shopify',
+			url: 'https://heyblox.com',
+			downloadUrl: appStoreUrl,
+		},
+		mentions: [
+			{ '@type': 'SoftwareApplication', name: 'NoFraud' },
+			{ '@type': 'SoftwareApplication', name: 'Signifyd' },
+			{ '@type': 'SoftwareApplication', name: 'Blockify' },
+		],
+	},
+	{
+		'@context': 'https://schema.org',
+		'@type': 'ItemList',
+		name: 'Blox comparisons',
+		itemListElement: [
+			{
+				'@type': 'ListItem',
+				position: 1,
+				name: 'Blox vs NoFraud',
+				url: `${pageUrl}#blox-vs-nofraud`,
+			},
+			{
+				'@type': 'ListItem',
+				position: 2,
+				name: 'Blox vs Signifyd',
+				url: `${pageUrl}#blox-vs-signifyd`,
+			},
+			{
+				'@type': 'ListItem',
+				position: 3,
+				name: 'Blox vs Blockify',
+				url: `${pageUrl}#blox-vs-blockify`,
+			},
+		],
+	},
+	{
+		'@context': 'https://schema.org',
+		'@type': 'FAQPage',
+		mainEntity: faqs.map((faq) => ({
+			'@type': 'Question',
+			name: faq.question,
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: faq.answer,
+			},
+		})),
+	},
+	{
+		'@context': 'https://schema.org',
+		'@type': 'BreadcrumbList',
+		itemListElement: [
+			{
+				'@type': 'ListItem',
+				position: 1,
+				name: 'Home',
+				item: 'https://heyblox.com/',
+			},
+			{
+				'@type': 'ListItem',
+				position: 2,
+				name: title,
+				item: pageUrl,
+			},
+		],
+	},
+];
+---
+
+<CompareLayout title={title} description={description} jsonLd={jsonLd} wide>
+	<span class="section-label">Comparison</span>
+	<h1>Blox vs NoFraud, Signifyd, and Blockify</h1>
+	<p class="section-lead">
+		<strong>Blox</strong> is a Shopify community customer blocklist: no per-transaction fees, no AI black box, and a shared ban that follows the person. <strong>NoFraud</strong> and <strong>Signifyd</strong> score checkouts and often sell a chargeback guarantee. <strong>Blockify</strong> filters traffic by IP, bot, and country.
+	</p>
+
+	<ul class="compare__jump">
+		<li><a href="#blox-vs-nofraud">Blox vs NoFraud</a></li>
+		<li><a href="#blox-vs-signifyd">Blox vs Signifyd</a></li>
+		<li><a href="#blox-vs-blockify">Blox vs Blockify</a></li>
+	</ul>
+
+	<section class="compare__block" aria-labelledby="table-heading">
+		<h2 id="table-heading">Side-by-side</h2>
+		<div class="compare__table-wrap">
+			<table>
+				<thead>
+					<tr>
+						<th>Dimension</th>
+						<th>Blox</th>
+						<th>NoFraud</th>
+						<th>Signifyd</th>
+						<th>Blockify</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">Primary model</th>
+						<td>Community customer blocklist with automatic identity linking</td>
+						<td>Order screening with optional chargeback guarantee</td>
+						<td>AI approve/decline with optional chargeback guarantee</td>
+						<td>Fraud filtering / blockers (IP, bot, country)</td>
+					</tr>
+					<tr>
+						<th scope="row">Pricing shape</th>
+						<td>Flat monthly Shopify subscription. No per-transaction fees.</td>
+						<td>Typically a percentage of revenue or a per-order fee</td>
+						<td>Typically a percentage of covered order value</td>
+						<td>App Store subscription for filter rules</td>
+					</tr>
+					<tr>
+						<th scope="row">Decision style</th>
+						<td>Explicit block; simple rules you control</td>
+						<td>AI/ML screening plus optional guarantee</td>
+						<td>AI model scores the order</td>
+						<td>Filter / score / block traffic patterns</td>
+					</tr>
+					<tr>
+						<th scope="row">Cross-store memory</th>
+						<td>Yes: when one store flags fraud, others can be protected</td>
+						<td>Network used to score this checkout</td>
+						<td>Commerce network used to score this checkout</td>
+						<td>Not a shared customer blocklist</td>
+					</tr>
+					<tr>
+						<th scope="row">Best against</th>
+						<td>Repeat chargebacks, serial returners, refund abuse, duplicate accounts</td>
+						<td>Unknown checkout fraud you want guaranteed</td>
+						<td>Unknown checkout fraud you want guaranteed</td>
+						<td>Bots, unwanted geos, session-level abuse</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
+
+	<section class="compare__block" aria-labelledby="blox-vs-nofraud">
+		<h2 id="blox-vs-nofraud">Blox vs NoFraud: no per-transaction fees</h2>
+		<p>
+			<strong>NoFraud</strong> (now operating as Wyllo) is built around screening each order and,
+			on paid plans, guaranteeing eligible fraud chargebacks it approved. That model is usually
+			priced as a percentage of revenue or a per-order fee, so cost scales with GMV.
+		</p>
+		<p>
+			<strong>Blox does not charge per-transaction fees.</strong> It is a flat monthly Shopify
+			subscription. You block a customer once, identity linking covers the aliases, and you are
+			not billed a cut of every order for using the blocklist.
+		</p>
+		<p>
+			Blox is built for the same person coming back, at a flat monthly price. NoFraud screens unknown checkouts and, on paid plans, guarantees the ones it passes.
+		</p>
+	</section>
+
+	<section class="compare__block" aria-labelledby="blox-vs-signifyd">
+		<h2 id="blox-vs-signifyd">Blox vs Signifyd: no AI black box</h2>
+		<p>
+			<strong>Signifyd</strong> is an AI fraud platform. It scores an order against a large
+			identity network and returns approve or decline. Merchants who buy the guarantee shift
+			chargeback liability for covered orders, but the primary control is a model, not a rule
+			your team wrote.
+		</p>
+		<p>
+			<strong>Blox has no AI black box as the primary control.</strong> You block by email,
+			phone, address, or payment. Accounts are grouped into one profile automatically. Holds and
+			cancels follow simple rules you set. When another store on the network flags the same
+			identity, you get a review signal you can act on, not an unexplained score.
+		</p>
+		<p>
+			Blox enforces a decision you have already made, or a network block, with a control you can explain. Signifyd scores orders with AI and can guarantee approved ones. A score can look fine on a new email; a blocklist still catches the person.
+		</p>
+	</section>
+
+	<section class="compare__block" aria-labelledby="blox-vs-blockify">
+		<h2 id="blox-vs-blockify">Blox vs Blockify: community blocklist</h2>
+		<p>
+			<strong>Blockify</strong> is commonly used as a fraud-filtering toolkit oriented around IP,
+			bots, and country-style controls. It is closer to “score and filter the session” than
+			“remember this customer forever across stores.”
+		</p>
+		<p>
+			<strong>Blox is a community customer blocklist.</strong> Every identifier a customer uses
+			is grouped into one profile automatically. Blocking fraudsters, chargeback abusers, serial
+			returners, and refund abusers takes one action, and that decision is shared across a
+			merchant network. When one store flags fraud, others can be protected.
+		</p>
+		<p>
+			Blox is built for repeat chargebacks and multi-account abuse. Blockify is a filter-first app for bots, IP ranges, and country blocking. More detail: <a href={withBase('compare/blox-vs-blockify/')}>Blox vs Blockify</a>.
+		</p>
+	</section>
+
+	<section class="compare__block" aria-labelledby="faq">
+		<h2 id="faq">FAQ</h2>
+		{
+			faqs.map((faq) => (
+				<>
+					<h3>{faq.question}</h3>
+					<p>{faq.answer}</p>
+				</>
+			))
+		}
+	</section>
+
+	<p class="compare__cta">
+		<a class="btn" href={appStoreUrl} rel="noopener noreferrer">Install Blox on Shopify</a>
+	</p>
+	<p class="compare__more">
+		<a href={withBase('guides/how-to-block-repeat-chargeback-customers/')}>How to block repeat chargeback customers</a>
+		<span aria-hidden="true">·</span>
+		<a href={withBase('guides/blocklist-vs-fraud-filter/')}>Blocklist vs fraud filter</a>
+		<span aria-hidden="true">·</span>
+		<a href={withBase('compare/blox-vs-blockify/')}>Blox vs Blockify</a>
+	</p>
+</CompareLayout>
