@@ -9,6 +9,8 @@ npm install
 npm run dev
 ```
 
+Copy [`.env.example`](.env.example) to `.env` for local builds of `/fraud-index/`.
+
 Build statically:
 
 ```bash
@@ -18,7 +20,15 @@ npm run preview
 
 ## Deploy
 
-Pushes to `main` run [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) and publish `dist/` to GitHub Pages.
+Pushes to `main` run [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) and publish `dist/` to GitHub Pages. The same workflow also runs hourly so the Fraud Index page can pick up the public API’s hourly cache.
+
+## Blox Fraud Index
+
+`/fraud-index/` is prerendered at build time from the public marketing `GET /fraud-index` JSON endpoint. Numbers must be in the HTML for search and answer engines; do not fetch them only in the browser.
+
+Set `FRAUD_INDEX_API_URL` to the full public URL. Resolve it from the `cn-marketing-prd` CloudFormation output `HttpApiUrl` plus `/fraud-index`, or from `FRAUD_INDEX_PUBLIC_URL` after the marketing service deploy. Do not hardcode an API Gateway id in the site.
+
+GitHub Actions reads repository variable `FRAUD_INDEX_API_URL` (Settings → Secrets and variables → Actions → Variables). If the variable is missing or the API returns 404, the page still ships with static explainer copy and no invented stats.
 
 In the repo: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
 
