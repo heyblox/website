@@ -1,0 +1,335 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../lib/urls';
+import {
+	fetchFraudIndex,
+	formatCount,
+	formatPeriod,
+	formatUpdatedAt,
+	formatUsd,
+	narrativeParagraphs,
+} from '../lib/fraudIndex';
+
+const appStoreUrl = 'https://apps.shopify.com/blocklist';
+const pageUrl = 'https://heyblox.com/fraud-index/';
+const title = 'Blox Fraud Index — Repeat Chargebacks Stopped by the Community-Powered Blocklist';
+const description =
+	'Live Shopify stats from the community-powered blocklist: repeat chargebacks stopped, serial returners blocked, and high-risk orders held or cancelled before fulfillment.';
+
+const result = await fetchFraudIndex();
+const index = result.status === 'ok' ? result.data : null;
+const heading = index?.headline ?? 'Blox Fraud Index';
+const periodLabel = index ? formatPeriod(index.period) : null;
+const paragraphs = index?.narrative ? narrativeParagraphs(index.narrative) : [];
+
+const jsonLd = [
+	{
+		'@context': 'https://schema.org',
+		'@type': 'Dataset',
+		name: 'Blox Fraud Index',
+		description: index?.headline ?? description,
+		url: pageUrl,
+		...(index ? { dateModified: index.updatedAt, temporalCoverage: index.period } : {}),
+		publisher: {
+			'@type': 'Organization',
+			name: 'Blox',
+			url: 'https://heyblox.com',
+			logo: 'https://heyblox.com/logo.png',
+		},
+		creator: {
+			'@type': 'Organization',
+			name: 'Blox',
+			url: 'https://heyblox.com',
+		},
+		...(index
+			? {
+					variableMeasured: [
+						{
+							'@type': 'PropertyValue',
+							name: 'Blocked bad actors',
+							value: index.stats.blockedBadActors,
+						},
+						{
+							'@type': 'PropertyValue',
+							name: 'GTV protected',
+							unitText: 'USD',
+							value: index.stats.gtvProtectedDollars,
+						},
+						{
+							'@type': 'PropertyValue',
+							name: 'Orders blocked',
+							value: index.stats.ordersBlocked,
+						},
+						{
+							'@type': 'PropertyValue',
+							name: 'Disputes represented',
+							value: index.stats.disputesRepresented,
+						},
+					],
+				}
+			: {}),
+		about: {
+			'@type': 'SoftwareApplication',
+			name: 'Blox',
+			applicationCategory: 'BusinessApplication',
+			operatingSystem: 'Shopify',
+			url: 'https://heyblox.com',
+			downloadUrl: appStoreUrl,
+		},
+		isAccessibleForFree: true,
+	},
+	{
+		'@context': 'https://schema.org',
+		'@type': 'BreadcrumbList',
+		itemListElement: [
+			{
+				'@type': 'ListItem',
+				position: 1,
+				name: 'Home',
+				item: 'https://heyblox.com/',
+			},
+			{
+				'@type': 'ListItem',
+				position: 2,
+				name: 'Blox Fraud Index',
+				item: pageUrl,
+			},
+		],
+	},
+];
+---
+
+<BaseLayout title={title} description={description} jsonLd={jsonLd}>
+	<article class="section index">
+		<div class="site-wrap index__wrap">
+			<header class="index__header">
+				<span class="section-label">
+					{periodLabel ? `Blox Fraud Index · ${periodLabel}` : 'Blox Fraud Index'}
+				</span>
+				<h1>{heading}</h1>
+				{
+					paragraphs.length > 0 && (
+						<div class="index__narrative">
+							{paragraphs.map((paragraph) => (
+								<p>{paragraph}</p>
+							))}
+						</div>
+					)
+				}
+				{
+					result.status === 'empty' && (
+						<p class="index__status">
+							Index publishes monthly from the community-powered blocklist.
+						</p>
+					)
+				}
+				{
+					result.status === 'unavailable' && (
+						<>
+							<p class="index__status">Stats unavailable.</p>
+							<p class="index__status">
+								Index publishes monthly from the community-powered blocklist.
+							</p>
+						</>
+					)
+				}
+			</header>
+
+			{
+				index && (
+					<dl class="index__stats">
+						<div>
+							<dt>Blocked bad actors</dt>
+							<dd>{formatCount(index.stats.blockedBadActors)}</dd>
+						</div>
+						<div>
+							<dt>GTV protected</dt>
+							<dd>{formatUsd(index.stats.gtvProtectedDollars)}</dd>
+						</div>
+						<div>
+							<dt>Orders blocked</dt>
+							<dd>{formatCount(index.stats.ordersBlocked)}</dd>
+						</div>
+						<div>
+							<dt>Disputes represented</dt>
+							<dd>{formatCount(index.stats.disputesRepresented)}</dd>
+						</div>
+					</dl>
+				)
+			}
+
+			<p class="index__disclaimer">
+				Aggregated and anonymized across the Blox merchant network. No individual store is
+				identifiable.
+			</p>
+			{
+				index && (
+					<p class="index__updated">
+						<time datetime={index.updatedAt}>Updated {formatUpdatedAt(index.updatedAt)}</time>
+					</p>
+				)
+			}
+
+			<section class="index__block" aria-labelledby="explainer-heading">
+				<h2 id="explainer-heading">How the Index is built</h2>
+				<p>
+					Blox is a Shopify app. When one merchant blocks a fraudster, other Blox stores can hold
+					or cancel that customer before fulfillment.
+				</p>
+				<p>Index figures are monthly network totals, rounded.</p>
+			</section>
+
+			<p class="index__cta">
+				<a class="btn" href={appStoreUrl} rel="noopener noreferrer">Install Blox on Shopify</a>
+			</p>
+			<p class="index__more">
+				<a href={withBase('compare/')}>Blox vs NoFraud, Signifyd, and Blockify</a>
+				<span aria-hidden="true">·</span>
+				<a href={withBase('faq/')}>FAQ</a>
+			</p>
+		</div>
+	</article>
+</BaseLayout>
+
+<style>
+	.index {
+		padding-top: 3.5rem;
+		padding-bottom: 5rem;
+	}
+
+	.index__wrap {
+		max-width: 100%;
+		min-width: 0;
+	}
+
+	.index__header h1 {
+		font-size: clamp(1.85rem, 4.4vw, 3.15rem);
+		max-width: 22ch;
+		margin-bottom: 1rem;
+		overflow-wrap: anywhere;
+	}
+
+	.index__narrative {
+		max-width: 42rem;
+	}
+
+	.index__narrative p {
+		margin: 0.85rem 0;
+		color: var(--color-fg-muted);
+		overflow-wrap: anywhere;
+	}
+
+	.index__status {
+		margin-top: 1rem;
+		max-width: 38rem;
+		color: var(--color-fg-muted);
+	}
+
+	.index__stats {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 0.75rem;
+		margin: 2.25rem 0 0;
+	}
+
+	.index__stats > div {
+		margin: 0;
+		padding: 1.1rem 1.15rem;
+		border: 1px solid var(--color-border);
+		background: var(--color-bg-elevated);
+	}
+
+	.index__stats dt {
+		color: var(--color-fg-muted);
+		font-family: var(--font-display);
+		font-size: 0.78rem;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.index__stats dd {
+		margin: 0.45rem 0 0;
+		font-family: var(--font-display);
+		font-size: clamp(1.45rem, 2.6vw, 1.85rem);
+		font-weight: 700;
+		letter-spacing: -0.03em;
+		line-height: 1.15;
+	}
+
+	.index__disclaimer {
+		margin-top: 1.15rem;
+		max-width: 42rem;
+		color: var(--color-fg-muted);
+		font-size: 0.95rem;
+	}
+
+	.index__updated {
+		margin-top: 0.45rem;
+		color: var(--color-fg-muted);
+		font-size: 0.9rem;
+	}
+
+	.index__block {
+		margin-top: 2.75rem;
+		max-width: 42rem;
+	}
+
+	.index__block h2 {
+		font-size: 1.45rem;
+		margin-bottom: 0.85rem;
+		overflow-wrap: anywhere;
+	}
+
+	.index__block p {
+		margin: 0.85rem 0;
+		color: var(--color-fg-muted);
+	}
+
+	.index__cta {
+		margin-top: 2.75rem;
+	}
+
+	.index__more {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		column-gap: 1.25rem;
+		row-gap: 0.5rem;
+		margin-top: 1.25rem;
+		color: var(--color-fg-muted);
+		font-size: 0.95rem;
+	}
+
+	.index__more a {
+		color: var(--color-fg);
+		text-decoration: none;
+	}
+
+	.index__more a:hover {
+		color: var(--color-red);
+	}
+
+	@media (max-width: 720px) {
+		.index__header h1 {
+			max-width: none;
+			font-size: 1.75rem;
+		}
+	}
+
+	@media (min-width: 560px) {
+		.index__stats {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	@media (min-width: 960px) {
+		.index__stats {
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+		}
+
+		.index__stats dd {
+			font-size: 1.45rem;
+		}
+	}
+</style>
