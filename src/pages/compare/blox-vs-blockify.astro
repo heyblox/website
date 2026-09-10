@@ -12,7 +12,7 @@ const appStoreUrl = 'https://apps.shopify.com/blocklist';
 	<span class="section-label">Comparison</span>
 	<h1>Blox vs Blockify: blocklist-first vs fraud scoring</h1>
 	<p class="section-lead">
-		Merchants searching for Shopify <strong>fraud prevention</strong> often compare a <em>customer blocklist</em> to a <em>fraud filter</em>. Here’s a clear head-to-head. For NoFraud and Signifyd as well, see <a href={withBase('compare/')}>Blox vs NoFraud, Signifyd, and Blockify</a>.
+		Merchants searching for Shopify <strong>fraud prevention</strong> often compare a <em>customer blocklist</em> to a <em>fraud filter</em>. Here’s a clear head-to-head. For NoFraud and Signifyd as well, see <a href={withBase('compare/')}>Blox vs NoFraud, Signifyd, and Blockify</a>. Live network totals: <a href={withBase('fraud-index/')}>Blox Fraud Index</a>.
 	</p>
 
 	<section class="compare__block" aria-labelledby="positioning">
@@ -83,6 +83,8 @@ const appStoreUrl = 'https://apps.shopify.com/blocklist';
 	</p>
 	<p class="compare__more">
 		<a href={withBase('compare/')}>Blox vs NoFraud, Signifyd, and Blockify</a>
+		<span aria-hidden="true">·</span>
+		<a href={withBase('fraud-index/')}>Blox Fraud Index</a>
 		<span aria-hidden="true">·</span>
 		<a href={withBase('faq/')}>FAQ</a>
 		<span aria-hidden="true">·</span>

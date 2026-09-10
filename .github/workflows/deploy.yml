@@ -3,6 +3,9 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  schedule:
+    # Index aggregation runs on the 1st. Rebuild later that day and again on the 2nd.
+    - cron: '0 16 1,2 * *'
   workflow_dispatch:
 
 permissions:
@@ -32,6 +35,8 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          FRAUD_INDEX_API_URL: ${{ vars.FRAUD_INDEX_API_URL }}
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
