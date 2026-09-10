@@ -129,7 +129,7 @@ const jsonLd = [
 	<span class="section-label">Comparison</span>
 	<h1>Blox vs NoFraud, Signifyd, and Blockify</h1>
 	<p class="section-lead">
-		<strong>Blox</strong> is a Shopify community customer blocklist: no per-transaction fees, no AI black box, and a shared ban that follows the person. <strong>NoFraud</strong> and <strong>Signifyd</strong> score checkouts and often sell a chargeback guarantee. <strong>Blockify</strong> filters traffic by IP, bot, and country.
+		<strong>Blox</strong> is a Shopify community customer blocklist: no per-transaction fees, no AI black box, and a shared ban that follows the person. <strong>NoFraud</strong> and <strong>Signifyd</strong> score checkouts and often sell a chargeback guarantee. <strong>Blockify</strong> filters traffic by IP, bot, and country. Live network totals are on the <a href={withBase('fraud-index/')}>Blox Fraud Index</a>.
 	</p>
 
 	<ul class="compare__jump">
@@ -262,6 +262,8 @@ const jsonLd = [
 		<a class="btn" href={appStoreUrl} rel="noopener noreferrer">Install Blox on Shopify</a>
 	</p>
 	<p class="compare__more">
+		<a href={withBase('fraud-index/')}>Blox Fraud Index</a>
+		<span aria-hidden="true">·</span>
 		<a href={withBase('faq/')}>FAQ</a>
 		<span aria-hidden="true">·</span>
 		<a href={withBase('guides/how-to-block-repeat-chargeback-customers/')}>How to block repeat chargeback customers</a>
