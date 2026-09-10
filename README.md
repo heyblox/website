@@ -20,7 +20,7 @@ npm run preview
 
 ## Deploy
 
-Pushes to `main` run [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) and publish `dist/` to GitHub Pages. The same workflow also runs hourly so the Fraud Index page can pick up the public API’s hourly cache.
+Pushes to `main` run [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) and publish `dist/` to GitHub Pages. The same workflow also runs on the 1st and 2nd of each month so the Fraud Index page picks up the new monthly publish.
 
 ## Blox Fraud Index
 

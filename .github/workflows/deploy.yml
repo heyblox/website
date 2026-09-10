@@ -4,8 +4,8 @@ on:
   push:
     branches: [main]
   schedule:
-    # Rebuild hourly so /fraud-index HTML stays in range of the API Cache-Control max-age=3600.
-    - cron: '20 * * * *'
+    # Index aggregation runs on the 1st. Rebuild later that day and again on the 2nd.
+    - cron: '0 16 1,2 * *'
   workflow_dispatch:
 
 permissions:
