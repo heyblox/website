@@ -3,6 +3,9 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  schedule:
+    # Rebuild hourly so /fraud-index HTML stays in range of the API Cache-Control max-age=3600.
+    - cron: '20 * * * *'
   workflow_dispatch:
 
 permissions:
@@ -32,6 +35,8 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          FRAUD_INDEX_API_URL: ${{ vars.FRAUD_INDEX_API_URL }}
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
