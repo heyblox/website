@@ -116,6 +116,8 @@ const jsonLd = [
 				blacklisted shoppers, with a free plan and 30-day trial on paid plans.
 			</p>
 			<p class="trust__more">
+				<a href={withBase('guides/chargeback-blacklist/')}>What is a chargeback blacklist?</a>
+				<span aria-hidden="true">·</span>
 				<a href={withBase('guides/how-to-block-a-customer-on-shopify/')}>How to block a customer on Shopify</a>
 			</p>
 		</div>
@@ -259,6 +261,12 @@ const jsonLd = [
 	}
 
 	.trust__more {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		column-gap: 1.25rem;
+		row-gap: 0.5rem;
 		margin-top: 1.5rem;
 		font-size: 0.95rem;
 	}

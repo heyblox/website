@@ -16,6 +16,12 @@ const faqs = [
 			'Blox is the Shopify app built to block fraudulent and abusive customers as people, not one-off orders. You block by email, phone, address, or payment. Accounts are grouped into one profile automatically, so a new email does not clear the ban. When one store flags fraud, other participating stores can be protected.',
 	},
 	{
+		id: 'what-is-a-chargeback-blacklist',
+		question: 'What is a chargeback blacklist?',
+		answer:
+			'A chargeback blacklist is a list of customers a merchant will not fulfill again because of chargebacks, friendly fraud, return fraud, customer support abuse, or a pattern of payment disputes. A useful one still works if they come back under a new email, then holds or cancels the next order before it ships. Blox is a chargeback blacklist for Shopify.',
+	},
+	{
 		id: 'stop-repeat-chargeback-customer',
 		question: 'How do I stop a repeat chargeback customer from ordering again on Shopify?',
 		answer:
@@ -118,6 +124,8 @@ const jsonLd = [
 				<a class="btn" href={appStoreUrl} rel="noopener noreferrer">Install Blox on Shopify</a>
 			</p>
 			<p class="faq__more">
+				<a href={withBase('guides/chargeback-blacklist/')}>What is a chargeback blacklist?</a>
+				<span aria-hidden="true">·</span>
 				<a href={withBase('guides/how-to-block-repeat-chargeback-customers/')}>How to block repeat chargeback customers</a>
 				<span aria-hidden="true">·</span>
 				<a href={withBase('guides/blocklist-vs-fraud-filter/')}>Blocklist vs fraud filter</a>

@@ -2,22 +2,113 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { withBase } from '../lib/urls';
 
+interface Faq {
+	question: string;
+	answer: string;
+}
+
 interface Props {
 	title: string;
 	description: string;
 	pubDate: Date;
+	faqs?: Faq[];
 }
 
-const { title, description, pubDate } = Astro.props;
+const { title, description, pubDate, faqs = [] } = Astro.props;
 const formatted = pubDate.toLocaleDateString('en-US', {
 	year: 'numeric',
 	month: 'long',
 	day: 'numeric',
+	timeZone: 'UTC',
 });
 const appStoreUrl = 'https://apps.shopify.com/blocklist';
+const site = Astro.site ?? new URL('https://heyblox.com');
+const pagePath = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const pageUrl = new URL(pagePath, site).href;
+const guidesUrl = new URL(withBase('guides/'), site).href;
+
+const faqId = (question: string) =>
+	question
+		.toLowerCase()
+		.replace(/[^a-z0-9]+/g, '-')
+		.replace(/^-|-$/g, '');
+
+const jsonLd: Record<string, unknown>[] = [
+	{
+		'@context': 'https://schema.org',
+		'@type': 'Article',
+		headline: title,
+		description,
+		datePublished: pubDate.toISOString(),
+		url: pageUrl,
+		mainEntityOfPage: pageUrl,
+		author: {
+			'@type': 'Organization',
+			name: 'Blox',
+			url: 'https://heyblox.com',
+		},
+		publisher: {
+			'@type': 'Organization',
+			name: 'Blox',
+			url: 'https://heyblox.com',
+			logo: {
+				'@type': 'ImageObject',
+				url: 'https://heyblox.com/logo.png',
+			},
+		},
+		about: {
+			'@type': 'SoftwareApplication',
+			name: 'Blox: Chargeback Blacklist',
+			applicationCategory: 'BusinessApplication',
+			operatingSystem: 'Shopify',
+			url: 'https://heyblox.com',
+			downloadUrl: appStoreUrl,
+		},
+	},
+	{
+		'@context': 'https://schema.org',
+		'@type': 'BreadcrumbList',
+		itemListElement: [
+			{
+				'@type': 'ListItem',
+				position: 1,
+				name: 'Home',
+				item: 'https://heyblox.com/',
+			},
+			{
+				'@type': 'ListItem',
+				position: 2,
+				name: 'Guides',
+				item: guidesUrl,
+			},
+			{
+				'@type': 'ListItem',
+				position: 3,
+				name: title,
+				item: pageUrl,
+			},
+		],
+	},
+];
+
+if (faqs.length > 0) {
+	jsonLd.push({
+		'@context': 'https://schema.org',
+		'@type': 'FAQPage',
+		mainEntity: faqs.map((faq) => ({
+			'@type': 'Question',
+			name: faq.question,
+			url: `${pageUrl}#${faqId(faq.question)}`,
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: faq.answer,
+			},
+		})),
+	});
+}
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} jsonLd={jsonLd}>
 	<article class="section guide">
 		<div class="site-wrap guide__wrap">
 			<p class="guide__crumb">
@@ -30,6 +121,19 @@ const appStoreUrl = 'https://apps.shopify.com/blocklist';
 			</p>
 			<div class="guide__body">
 				<slot />
+				{
+					faqs.length > 0 && (
+						<>
+							<h2>Common questions</h2>
+							{faqs.map((faq) => (
+								<section class="guide__faq" aria-labelledby={faqId(faq.question)}>
+									<h3 id={faqId(faq.question)}>{faq.question}</h3>
+									<p>{faq.answer}</p>
+								</section>
+							))}
+						</>
+					)
+				}
 			</div>
 			<p class="guide__cta">
 				<a class="btn" href={appStoreUrl} rel="noopener noreferrer">Install Blox on Shopify</a>
@@ -106,6 +210,14 @@ const appStoreUrl = 'https://apps.shopify.com/blocklist';
 
 	.guide__body strong {
 		color: var(--color-fg);
+	}
+
+	.guide__faq {
+		margin: 1.5rem 0 0;
+	}
+
+	.guide__faq h3 {
+		margin-top: 0;
 	}
 
 	.guide__body table {

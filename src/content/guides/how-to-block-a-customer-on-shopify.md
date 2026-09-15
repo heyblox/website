@@ -82,6 +82,7 @@ Use native tools for process and documentation. Use a blocklist when you need th
 
 ## Related guides
 
+- [What is a chargeback blacklist?](../chargeback-blacklist/)
 - [How to block repeat chargeback customers with Blox](../how-to-block-repeat-chargeback-customers/)
 - [Blocklist vs fraud filter: when to use each](../blocklist-vs-fraud-filter/)
 - [FAQ: Shopify fraud, chargebacks, and blocklists](../../faq/)

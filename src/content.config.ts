@@ -9,6 +9,14 @@ const guides = defineCollection({
 		description: z.string(),
 		pubDate: z.coerce.date(),
 		draft: z.boolean().default(true),
+		faqs: z
+			.array(
+				z.object({
+					question: z.string(),
+					answer: z.string(),
+				}),
+			)
+			.optional(),
 	}),
 });
 
