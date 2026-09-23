@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const title = 'Why Blox held an order instead of cancelling it';
 const description =
-	'Blox holds an order for review when it has already cancelled several orders for the same customer recently.';
+	'When Blox has already cancelled several orders for the same customer, it holds the next one for a Manual Blox Review.';
 ---
 
 <BaseLayout title={title} description={description} noindex>
@@ -14,34 +14,25 @@ const description =
 			<div class="doc__body">
 				<p>
 					Blox had already cancelled several orders for this customer in a short time. That’s
-					unusual, so it held this order for you to review rather than cancelling and refunding
-					another one.
+					unusual, so it held this order for a Manual Blox Review rather than cancelling and
+					refunding another one.
 				</p>
 				<p>
-					A run of cancellations sometimes means more than one shopper has ended up under a single
-					customer profile. Cancelling can’t be undone. A hold can, so the decision is left to you.
+					A run of cancellations sometimes means a legitimate customer was flagged, or that more
+					than one shopper ended up on the same profile. Cancelling and refunding can’t be undone,
+					so Blox holds the order and a member of the Blox team reviews that customer’s recent
+					orders.
 				</p>
-				<p>Either way the order is stopped, and nothing ships until you decide.</p>
 
-				<h2>What to do</h2>
+				<h2>How this differs from a normal Blox hold</h2>
 				<p>
-					Open the customer from the link in your notification and review the orders under that
-					profile.
+					On a normal Blox hold, you still need to cancel the order or release the hold. This one
+					is different: Blox is reviewing the recent orders, and the notification won’t ask you to
+					cancel or release it. You can still open the customer from the link in your notification.
 				</p>
-				<ul>
-					<li><strong>One person, correctly blocked</strong> — cancel the held order.</li>
-					<li>
-						<strong>More than one shopper grouped together</strong> — release the hold and let us
-						know at <a href="mailto:hello@heyblox.com">hello@heyblox.com</a>.
-					</li>
-				</ul>
+				<p>This applies to one customer, not your whole store.</p>
 				<p>
-					Blox resumes cancelling on its own once those earlier cancellations are more than 24 hours
-					old.
-				</p>
-				<p>
-					Questions, or a profile that has grouped the wrong people? Email{' '}
-					<a href="mailto:hello@heyblox.com">hello@heyblox.com</a>.
+					Questions? Email <a href="mailto:hello@heyblox.com">hello@heyblox.com</a>.
 				</p>
 			</div>
 		</div>
@@ -71,16 +62,6 @@ const description =
 	.doc__body p {
 		margin: 0.85rem 0;
 		color: var(--color-fg-muted);
-	}
-
-	.doc__body ul {
-		margin: 0.75rem 0 1rem;
-		padding-left: 1.25rem;
-		color: var(--color-fg-muted);
-	}
-
-	.doc__body li {
-		margin: 0.4rem 0;
 	}
 
 	.doc__body a {
