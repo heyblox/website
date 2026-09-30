@@ -10,6 +10,13 @@ import LegalLayout from '../layouts/LegalLayout.astro';
 	lastUpdated="January 15, 2026"
 	noindex
 >
+	<aside class="privacy-notice">
+		<p>
+			<strong>New Shopify permissions.</strong> Shopify is asking you to approve read and write
+			access to gift cards. Blox uses this to cancel gift cards ordered by customer clusters set to
+			“CANCEL”. This ensures that fraudsters can't bypass your blocks by ordering gift cards.
+		</p>
+	</aside>
 	<p>
 		Blox Labs, Inc. and its affiliates (“Blox”, “we”, “our”, or “us”) respect your privacy and are
 		committed to protecting it. Our fraud-prevention platform helps our merchant customers
@@ -317,3 +324,18 @@ import LegalLayout from '../layouts/LegalLayout.astro';
 		</li>
 	</ul>
 </LegalLayout>
+
+<style>
+	.privacy-notice {
+		margin: 0 0 2rem;
+		padding: 1rem 1.15rem;
+		border: 1px solid var(--color-border);
+		border-radius: 0.5rem;
+		background: var(--color-bg-elevated);
+	}
+
+	.privacy-notice p {
+		margin: 0;
+		color: var(--color-fg);
+	}
+</style>
