@@ -12,14 +12,21 @@ import {
 
 const appStoreUrl = 'https://apps.shopify.com/blocklist';
 const pageUrl = 'https://heyblox.com/fraud-index/';
-const title = 'Blox Fraud Index — Repeat Chargebacks Stopped by the Community-Powered Blocklist';
+const title = 'Blox Fraud Index — Monthly Shopify Orders Blocked by the Community-Powered Blocklist';
 const description =
-	'Live Shopify stats from the community-powered blocklist: repeat chargebacks stopped, serial returners blocked, and high-risk orders held or cancelled before fulfillment.';
+	'Monthly Shopify stats from the community-powered blocklist: orders held or cancelled before fulfillment, plus network totals to date.';
 
 const result = await fetchFraudIndex();
 const index = result.status === 'ok' ? result.data : null;
 const heading = index?.headline ?? 'Blox Fraud Index';
-const periodLabel = index ? formatPeriod(index.period) : null;
+const month = index?.month ?? null;
+const periodLabel = index && month ? formatPeriod(index.period) : null;
+const asOfLabel = index ? formatUpdatedAt(index.toDate.asOf) : null;
+const sectionLabel = periodLabel
+	? `Blox Fraud Index · ${periodLabel}`
+	: asOfLabel
+		? `Blox Fraud Index · Totals as of ${asOfLabel}`
+		: 'Blox Fraud Index';
 const paragraphs = index?.narrative ? narrativeParagraphs(index.narrative) : [];
 
 const jsonLd = [
@@ -29,7 +36,8 @@ const jsonLd = [
 		name: 'Blox Fraud Index',
 		description: index?.headline ?? description,
 		url: pageUrl,
-		...(index ? { dateModified: index.updatedAt, temporalCoverage: index.period } : {}),
+		...(index ? { dateModified: index.updatedAt } : {}),
+		...(month && index ? { temporalCoverage: index.period } : {}),
 		publisher: {
 			'@type': 'Organization',
 			name: 'Blox',
@@ -44,26 +52,35 @@ const jsonLd = [
 		...(index
 			? {
 					variableMeasured: [
+						...(month
+							? [
+									{
+										'@type': 'PropertyValue',
+										name: `Orders held or cancelled in ${periodLabel}`,
+										value: month.ordersBlocked,
+									},
+									{
+										'@type': 'PropertyValue',
+										name: `Value of blocked orders in ${periodLabel}`,
+										unitText: 'USD',
+										value: month.blockedOrderValueDollars,
+									},
+								]
+							: []),
 						{
 							'@type': 'PropertyValue',
-							name: 'Blocked bad actors',
-							value: index.stats.blockedBadActors,
+							name: 'Blocked customers to date',
+							value: index.toDate.blockedCustomers,
 						},
 						{
 							'@type': 'PropertyValue',
-							name: 'GTV protected',
-							unitText: 'USD',
-							value: index.stats.gtvProtectedDollars,
+							name: 'Orders blocked to date',
+							value: index.toDate.ordersBlocked,
 						},
 						{
 							'@type': 'PropertyValue',
-							name: 'Orders blocked',
-							value: index.stats.ordersBlocked,
-						},
-						{
-							'@type': 'PropertyValue',
-							name: 'Disputes represented',
-							value: index.stats.disputesRepresented,
+							name: 'Chargebacks and disputes on blocked customers to date',
+							value: index.toDate.chargebacksAndDisputesOnBlockedCustomers,
 						},
 					],
 				}
@@ -104,7 +121,7 @@ const jsonLd = [
 		<div class="site-wrap index__wrap">
 			<header class="index__header">
 				<span class="section-label">
-					{periodLabel ? `Blox Fraud Index · ${periodLabel}` : 'Blox Fraud Index'}
+					{sectionLabel}
 				</span>
 				<h1>{heading}</h1>
 				{
@@ -136,25 +153,44 @@ const jsonLd = [
 			</header>
 
 			{
+				month && (
+					<section class="index__group" aria-labelledby="month-heading">
+						<h2 id="month-heading" class="index__group-label">In {periodLabel}</h2>
+						<dl class="index__stats">
+							<div>
+								<dt>Orders held or cancelled</dt>
+								<dd>{formatCount(month.ordersBlocked)}</dd>
+							</div>
+							<div>
+								<dt>Value of blocked orders</dt>
+								<dd>{formatUsd(month.blockedOrderValueDollars)}</dd>
+							</div>
+						</dl>
+					</section>
+				)
+			}
+
+			{
 				index && (
-					<dl class="index__stats">
-						<div>
-							<dt>Blocked bad actors</dt>
-							<dd>{formatCount(index.stats.blockedBadActors)}</dd>
-						</div>
-						<div>
-							<dt>GTV protected</dt>
-							<dd>{formatUsd(index.stats.gtvProtectedDollars)}</dd>
-						</div>
-						<div>
-							<dt>Orders blocked</dt>
-							<dd>{formatCount(index.stats.ordersBlocked)}</dd>
-						</div>
-						<div>
-							<dt>Disputes represented</dt>
-							<dd>{formatCount(index.stats.disputesRepresented)}</dd>
-						</div>
-					</dl>
+					<section class="index__group" aria-labelledby="to-date-heading">
+						<h2 id="to-date-heading" class="index__group-label">
+							Network to date · as of {asOfLabel}
+						</h2>
+						<dl class="index__stats">
+							<div>
+								<dt>Blocked customers</dt>
+								<dd>{formatCount(index.toDate.blockedCustomers)}</dd>
+							</div>
+							<div>
+								<dt>Orders blocked</dt>
+								<dd>{formatCount(index.toDate.ordersBlocked)}</dd>
+							</div>
+							<div>
+								<dt>Chargebacks &amp; disputes on blocked customers</dt>
+								<dd>{formatCount(index.toDate.chargebacksAndDisputesOnBlockedCustomers)}</dd>
+							</div>
+						</dl>
+					</section>
 				)
 			}
 
@@ -176,7 +212,7 @@ const jsonLd = [
 					Blox is a Shopify app. When one merchant blocks a fraudster, other Blox stores can hold
 					or cancel that customer before fulfillment.
 				</p>
-				<p>Index figures are monthly network totals, rounded.</p>
+				<p>The Index publishes monthly figures alongside network totals to date.</p>
 			</section>
 
 			<p class="index__cta">
@@ -225,11 +261,25 @@ const jsonLd = [
 		color: var(--color-fg-muted);
 	}
 
+	.index__group {
+		margin-top: 2.25rem;
+	}
+
+	.index__group-label {
+		margin: 0 0 0.75rem;
+		color: var(--color-fg-muted);
+		font-family: var(--font-display);
+		font-size: 0.85rem;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
 	.index__stats {
 		display: grid;
 		grid-template-columns: 1fr;
 		gap: 0.75rem;
-		margin: 2.25rem 0 0;
+		margin: 0;
 	}
 
 	.index__stats > div {
@@ -325,7 +375,7 @@ const jsonLd = [
 
 	@media (min-width: 960px) {
 		.index__stats {
-			grid-template-columns: repeat(4, minmax(0, 1fr));
+			grid-template-columns: repeat(3, minmax(0, 1fr));
 		}
 
 		.index__stats dd {
