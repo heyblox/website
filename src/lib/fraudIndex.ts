@@ -1,17 +1,29 @@
 import { loadEnv } from 'vite';
 
-export type FraudIndexStats = {
-	blockedBadActors: number;
-	gtvProtectedDollars: number;
+/** Activity during the reporting month. */
+export type FraudIndexMonth = {
 	ordersBlocked: number;
-	disputesRepresented: number;
+	/** USD-denominated blocked orders only; other currencies are excluded, not converted. */
+	usdBlockedOrderValueDollars: number;
+};
+
+/** Cumulative network totals as of `asOf`. Not monthly figures. */
+export type FraudIndexToDate = {
+	asOf: string;
+	/** Store-level blocklist entries: one customer blocked by two stores counts twice. */
+	blocklistEntries: number;
+	ordersBlocked: number;
+	/** Chargebacks and inquiries ever filed on orders from customers now on blocklists. */
+	chargebacksAndDisputesOnBlockedCustomers: number;
 };
 
 export type FraudIndexResponse = {
 	period: string;
 	headline: string | null;
 	narrative: string | null;
-	stats: FraudIndexStats;
+	/** Null for snapshots published before the index reported monthly figures. */
+	month: FraudIndexMonth | null;
+	toDate: FraudIndexToDate;
 	updatedAt: string;
 };
 
@@ -49,36 +61,65 @@ function asNullableString(value: unknown): string | null {
 	return trimmed.length > 0 ? trimmed : null;
 }
 
-function parseFraudIndex(body: unknown): FraudIndexResponse | null {
-	if (!body || typeof body !== 'object') return null;
-	const data = body as Record<string, unknown>;
-	if (typeof data.period !== 'string' || data.period.trim() === '') return null;
-	if (typeof data.updatedAt !== 'string' || data.updatedAt.trim() === '') return null;
-	if (!data.stats || typeof data.stats !== 'object') return null;
+function asRecord(value: unknown): Record<string, unknown> | null {
+	return value && typeof value === 'object' ? (value as Record<string, unknown>) : null;
+}
 
-	const rawStats = data.stats as Record<string, unknown>;
-	const stats: FraudIndexStats = {
-		blockedBadActors: rawStats.blockedBadActors as number,
-		gtvProtectedDollars: rawStats.gtvProtectedDollars as number,
-		ordersBlocked: rawStats.ordersBlocked as number,
-		disputesRepresented: rawStats.disputesRepresented as number,
-	};
+function parseMonth(value: unknown): FraudIndexMonth | null {
+	const raw = asRecord(value);
+	if (!raw) return null;
+	const { ordersBlocked, usdBlockedOrderValueDollars } = raw;
+	if (!isFiniteNumber(ordersBlocked) || !isFiniteNumber(usdBlockedOrderValueDollars)) return null;
+	return { ordersBlocked, usdBlockedOrderValueDollars };
+}
 
+/** Reads `toDate`, or the legacy `stats` block from an API deployed before `toDate` existed. */
+function parseToDate(data: Record<string, unknown>, updatedAt: string): FraudIndexToDate | null {
+	const toDate = asRecord(data.toDate);
+	const legacy = asRecord(data.stats);
+	const candidate = toDate
+		? {
+				asOf: typeof toDate.asOf === 'string' && toDate.asOf.trim() !== '' ? toDate.asOf.trim() : updatedAt,
+				blocklistEntries: toDate.blocklistEntries,
+				ordersBlocked: toDate.ordersBlocked,
+				chargebacksAndDisputesOnBlockedCustomers: toDate.chargebacksAndDisputesOnBlockedCustomers,
+			}
+		: legacy
+			? {
+					asOf: updatedAt,
+					blocklistEntries: legacy.blockedBadActors,
+					ordersBlocked: legacy.ordersBlocked,
+					chargebacksAndDisputesOnBlockedCustomers: legacy.disputesRepresented,
+				}
+			: null;
 	if (
-		!isFiniteNumber(stats.blockedBadActors) ||
-		!isFiniteNumber(stats.gtvProtectedDollars) ||
-		!isFiniteNumber(stats.ordersBlocked) ||
-		!isFiniteNumber(stats.disputesRepresented)
+		!candidate ||
+		!isFiniteNumber(candidate.blocklistEntries) ||
+		!isFiniteNumber(candidate.ordersBlocked) ||
+		!isFiniteNumber(candidate.chargebacksAndDisputesOnBlockedCustomers)
 	) {
 		return null;
 	}
+	return candidate as FraudIndexToDate;
+}
+
+function parseFraudIndex(body: unknown): FraudIndexResponse | null {
+	const data = asRecord(body);
+	if (!data) return null;
+	if (typeof data.period !== 'string' || data.period.trim() === '') return null;
+	if (typeof data.updatedAt !== 'string' || data.updatedAt.trim() === '') return null;
+	const updatedAt = data.updatedAt.trim();
+
+	const toDate = parseToDate(data, updatedAt);
+	if (!toDate) return null;
 
 	return {
 		period: data.period.trim(),
 		headline: asNullableString(data.headline),
 		narrative: asNullableString(data.narrative),
-		stats,
-		updatedAt: data.updatedAt.trim(),
+		month: parseMonth(data.month),
+		toDate,
+		updatedAt,
 	};
 }
 
