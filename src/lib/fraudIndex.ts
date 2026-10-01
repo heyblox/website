@@ -10,8 +10,7 @@ export type FraudIndexMonth = {
 /** Cumulative network totals as of `asOf`. Not monthly figures. */
 export type FraudIndexToDate = {
 	asOf: string;
-	/** Store-level blocklist entries: one customer blocked by two stores counts twice. */
-	blocklistEntries: number;
+	blockedCustomers: number;
 	ordersBlocked: number;
 	/** Chargebacks and inquiries ever filed on orders from customers now on blocklists. */
 	chargebacksAndDisputesOnBlockedCustomers: number;
@@ -80,21 +79,21 @@ function parseToDate(data: Record<string, unknown>, updatedAt: string): FraudInd
 	const candidate = toDate
 		? {
 				asOf: typeof toDate.asOf === 'string' && toDate.asOf.trim() !== '' ? toDate.asOf.trim() : updatedAt,
-				blocklistEntries: toDate.blocklistEntries,
+				blockedCustomers: toDate.blockedCustomers,
 				ordersBlocked: toDate.ordersBlocked,
 				chargebacksAndDisputesOnBlockedCustomers: toDate.chargebacksAndDisputesOnBlockedCustomers,
 			}
 		: legacy
 			? {
 					asOf: updatedAt,
-					blocklistEntries: legacy.blockedBadActors,
+					blockedCustomers: legacy.blockedBadActors,
 					ordersBlocked: legacy.ordersBlocked,
 					chargebacksAndDisputesOnBlockedCustomers: legacy.disputesRepresented,
 				}
 			: null;
 	if (
 		!candidate ||
-		!isFiniteNumber(candidate.blocklistEntries) ||
+		!isFiniteNumber(candidate.blockedCustomers) ||
 		!isFiniteNumber(candidate.ordersBlocked) ||
 		!isFiniteNumber(candidate.chargebacksAndDisputesOnBlockedCustomers)
 	) {

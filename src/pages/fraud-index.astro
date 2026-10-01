@@ -69,8 +69,8 @@ const jsonLd = [
 							: []),
 						{
 							'@type': 'PropertyValue',
-							name: 'Blocklist entries to date',
-							value: index.toDate.blocklistEntries,
+							name: 'Blocked customers to date',
+							value: index.toDate.blockedCustomers,
 						},
 						{
 							'@type': 'PropertyValue',
@@ -178,8 +178,8 @@ const jsonLd = [
 						</h2>
 						<dl class="index__stats">
 							<div>
-								<dt>Blocklist entries</dt>
-								<dd>{formatCount(index.toDate.blocklistEntries)}</dd>
+								<dt>Blocked customers</dt>
+								<dd>{formatCount(index.toDate.blockedCustomers)}</dd>
 							</div>
 							<div>
 								<dt>Orders blocked</dt>
@@ -217,9 +217,8 @@ const jsonLd = [
 					calendar month (UTC). Order value includes orders placed in US dollars only.
 				</p>
 				<p>
-					Network-to-date figures are cumulative. Blocklist entries are counted per store, so a
-					customer blocked by two stores counts twice. The dispute figure is the chargeback and
-					inquiry history of customers merchants have blocked.
+					Network-to-date figures are cumulative. The dispute figure is the chargeback and inquiry
+					history of customers merchants have blocked.
 				</p>
 				<p>All figures are rounded to two significant figures.</p>
 			</section>
