@@ -3,8 +3,8 @@ import { loadEnv } from 'vite';
 /** Activity during the reporting month. */
 export type FraudIndexMonth = {
 	ordersBlocked: number;
-	/** USD-denominated blocked orders only; other currencies are excluded, not converted. */
-	usdBlockedOrderValueDollars: number;
+	/** Roughly converted to USD. */
+	blockedOrderValueDollars: number;
 };
 
 /** Cumulative network totals as of `asOf`. Not monthly figures. */
@@ -67,9 +67,9 @@ function asRecord(value: unknown): Record<string, unknown> | null {
 function parseMonth(value: unknown): FraudIndexMonth | null {
 	const raw = asRecord(value);
 	if (!raw) return null;
-	const { ordersBlocked, usdBlockedOrderValueDollars } = raw;
-	if (!isFiniteNumber(ordersBlocked) || !isFiniteNumber(usdBlockedOrderValueDollars)) return null;
-	return { ordersBlocked, usdBlockedOrderValueDollars };
+	const { ordersBlocked, blockedOrderValueDollars } = raw;
+	if (!isFiniteNumber(ordersBlocked) || !isFiniteNumber(blockedOrderValueDollars)) return null;
+	return { ordersBlocked, blockedOrderValueDollars };
 }
 
 /** Reads `toDate`, or the legacy `stats` block from an API deployed before `toDate` existed. */

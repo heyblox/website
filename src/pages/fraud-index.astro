@@ -61,9 +61,9 @@ const jsonLd = [
 									},
 									{
 										'@type': 'PropertyValue',
-										name: `Value of blocked USD orders in ${periodLabel}`,
+										name: `Value of blocked orders in ${periodLabel}`,
 										unitText: 'USD',
-										value: month.usdBlockedOrderValueDollars,
+										value: month.blockedOrderValueDollars,
 									},
 								]
 							: []),
@@ -162,8 +162,8 @@ const jsonLd = [
 								<dd>{formatCount(month.ordersBlocked)}</dd>
 							</div>
 							<div>
-								<dt>Value of blocked USD orders</dt>
-								<dd>{formatUsd(month.usdBlockedOrderValueDollars)}</dd>
+								<dt>Value of blocked orders</dt>
+								<dd>{formatUsd(month.blockedOrderValueDollars)}</dd>
 							</div>
 						</dl>
 					</section>
@@ -214,7 +214,7 @@ const jsonLd = [
 				</p>
 				<p>
 					Monthly figures count the orders Blox held or cancelled across the network during that
-					calendar month (UTC). Order value includes orders placed in US dollars only.
+					calendar month (UTC). Order value is converted to US dollars at approximate exchange rates.
 				</p>
 				<p>
 					Network-to-date figures are cumulative. The dispute figure is the chargeback and inquiry
