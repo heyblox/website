@@ -116,11 +116,11 @@ A typical workflow is:
 2. Add that customer to the blacklist.
 3. Stop matching orders before they ship.
 
-For the Shopify walkthrough, see [How to block repeat chargeback customers with Blox](../how-to-block-repeat-chargeback-customers/) and [How to block a customer on Shopify](../how-to-block-a-customer-on-shopify/).
+For the Shopify walkthrough, see [How to block repeat chargeback customers with Blox](../how-to-block-repeat-chargeback-customers/) and [How to block or blacklist a customer on Shopify](../how-to-block-a-customer-on-shopify/).
 
 ## Related reading
 
-- [How to block a customer on Shopify](../how-to-block-a-customer-on-shopify/)
+- [How to block or blacklist a customer on Shopify](../how-to-block-a-customer-on-shopify/)
 - [How to block repeat chargeback customers with Blox](../how-to-block-repeat-chargeback-customers/)
 - [Blocklist vs fraud filter: when to use each](../blocklist-vs-fraud-filter/)
 - [FAQ: Shopify fraud, chargebacks, and blocklists](../../faq/)

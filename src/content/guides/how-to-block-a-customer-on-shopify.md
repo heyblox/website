@@ -1,6 +1,6 @@
 ---
-title: "How to block a customer on Shopify"
-description: "How Shopify merchants block customers, from native tools to a durable blocklist that stops repeat abusers across emails and accounts."
+title: "How to block or blacklist a customer on Shopify"
+description: "How to block or blacklist a customer on Shopify, from native tools to a customer blocklist that stops repeat abusers across emails and accounts."
 pubDate: 2026-08-05
 draft: false
 ---
@@ -41,7 +41,7 @@ For many merchants, that gap is the whole problem.
 
 ## How to block a customer with Blox
 
-Blox is a **customer blocklist** for Shopify. Blox automatically groups every identifier it sees, so email, phone, address, and payment all resolve to one customer profile.
+Blox is a **customer blocklist** (also called a customer blacklist) for Shopify. Blox automatically groups every identifier it sees, so email, phone, address, and payment all resolve to one customer profile.
 
 ### 1. Install Blox
 

@@ -57,7 +57,7 @@ If your only tool is scoring, repeat offenders will keep resetting the game. If 
 ## Related reading
 
 - [What is a chargeback blacklist?](../chargeback-blacklist/)
-- [How to block a customer on Shopify](../how-to-block-a-customer-on-shopify/)
+- [How to block or blacklist a customer on Shopify](../how-to-block-a-customer-on-shopify/)
 - [How to block repeat chargeback customers with Blox](../how-to-block-repeat-chargeback-customers/)
 - [FAQ: Shopify fraud, chargebacks, and blocklists](../../faq/)
 - [Blox vs NoFraud, Signifyd, and Blockify](../../compare/)
