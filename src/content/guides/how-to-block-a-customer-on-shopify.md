@@ -45,7 +45,7 @@ Blox is a **customer blocklist** for Shopify. Blox automatically groups every id
 
 ### 1. Install Blox
 
-Open [Blox: Chargeback Blacklist](https://apps.shopify.com/blocklist) and install it on your store. A free plan is available; paid plans include a trial.
+Open [Blox: Block Customer Blacklist](https://apps.shopify.com/blocklist) and install it on your store. A free plan is available; paid plans include a trial.
 
 ### 2. Find the customer
 

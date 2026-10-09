@@ -21,7 +21,7 @@ Local rules that only match one email or card miss the person. Blox is built aro
 
 ## Step 1: Install Blox on Shopify
 
-1. Open [Blox: Chargeback Blacklist](https://apps.shopify.com/blocklist) in the Shopify App Store.
+1. Open [Blox: Block Customer Blacklist](https://apps.shopify.com/blocklist) in the Shopify App Store.
 2. Install on your store (free plan available; paid plans include a trial).
 3. Blox starts grouping your customers into unified profiles right away. There is no matching logic to configure.
 
