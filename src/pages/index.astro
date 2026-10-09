@@ -17,7 +17,8 @@ const jsonLd = [
 	{
 		'@context': 'https://schema.org',
 		'@type': 'SoftwareApplication',
-		name: 'Blox: Chargeback Blacklist',
+		name: 'Blox: Block Customer Blacklist',
+		alternateName: 'Blox',
 		applicationCategory: 'BusinessApplication',
 		operatingSystem: 'Shopify',
 		url: 'https://heyblox.com',
@@ -34,8 +35,8 @@ const jsonLd = [
 ---
 
 <BaseLayout
-	title="Blox: Chargeback Blacklist for Shopify"
-	description="Block fraudsters once. We’ll handle the rest. Shopify fraud prevention with a community blocklist. Stop chargebacks, serial returners, and refund abuse before fulfillment."
+	title="Blox: Block Customers on Shopify | Customer Blacklist"
+	description="Block customers on Shopify by email, phone, address, or payment. A shared customer blacklist that stops chargebacks and refund abuse before fulfillment."
 	jsonLd={jsonLd}
 >
 	<Hero />
@@ -118,14 +119,14 @@ const jsonLd = [
 			<p class="trust__more">
 				<a href={withBase('guides/chargeback-blacklist/')}>What is a chargeback blacklist?</a>
 				<span aria-hidden="true">·</span>
-				<a href={withBase('guides/how-to-block-a-customer-on-shopify/')}>How to block a customer on Shopify</a>
+				<a href={withBase('guides/how-to-block-a-customer-on-shopify/')}>How to block or blacklist a customer on Shopify</a>
 			</p>
 		</div>
 	</section>
 
 	<section class="section cta" aria-labelledby="cta-heading">
 		<div class="site-wrap cta__inner">
-			<h2 id="cta-heading" class="section-title">Block fraudsters once.</h2>
+			<h2 id="cta-heading" class="section-title">Block bad customers once.</h2>
 			<p class="section-lead">
 				Install Blox from the Shopify App Store and turn every block into shared
 				protection.

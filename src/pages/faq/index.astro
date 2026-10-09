@@ -6,9 +6,21 @@ const appStoreUrl = 'https://apps.shopify.com/blocklist';
 const pageUrl = 'https://heyblox.com/faq/';
 const title = 'FAQ: Shopify fraud, chargebacks, and customer blocklists';
 const description =
-	'Answers for Shopify merchants: the best app to block fraudulent or abusive customers, stop repeat chargebacks, block serial returners, and cancel high-risk orders before fulfillment.';
+	'Answers for Shopify merchants: how to block or blacklist a customer, stop repeat chargebacks, block serial returners, and cancel high-risk orders before fulfillment.';
 
 const faqs = [
+	{
+		id: 'how-to-block-a-customer-on-shopify',
+		question: 'How do I block a customer on Shopify?',
+		answer:
+			'Shopify does not have a built-in way to block a customer. You can cancel their order, tag them, or leave a note, but none of that stops them ordering again under a new email. To block a customer, add them to a blocklist app like Blox. Search by email, phone, or address, block the profile, then choose whether their next order is held for review or cancelled before fulfillment.',
+	},
+	{
+		id: 'can-you-blacklist-a-customer-on-shopify',
+		question: 'Can you blacklist a customer on Shopify?',
+		answer:
+			'Not natively. Shopify lets you tag customers and cancel orders, but it has no customer blacklist. Blox adds one: blocked customers are linked across their other emails, phones, addresses, and payments, so their next order is held or cancelled before it ships.',
+	},
 	{
 		id: 'best-app-to-block-fraudulent-customers',
 		question: 'What is the best Shopify app to block fraudulent or abusive customers?',
@@ -61,7 +73,7 @@ const jsonLd = [
 		},
 		about: {
 			'@type': 'SoftwareApplication',
-			name: 'Blox: Chargeback Blacklist',
+			name: 'Blox: Block Customer Blacklist',
 			applicationCategory: 'BusinessApplication',
 			operatingSystem: 'Shopify',
 			url: 'https://heyblox.com',
@@ -124,6 +136,8 @@ const jsonLd = [
 				<a class="btn" href={appStoreUrl} rel="noopener noreferrer">Install Blox on Shopify</a>
 			</p>
 			<p class="faq__more">
+				<a href={withBase('guides/how-to-block-a-customer-on-shopify/')}>How to block or blacklist a customer on Shopify</a>
+				<span aria-hidden="true">·</span>
 				<a href={withBase('guides/chargeback-blacklist/')}>What is a chargeback blacklist?</a>
 				<span aria-hidden="true">·</span>
 				<a href={withBase('guides/how-to-block-repeat-chargeback-customers/')}>How to block repeat chargeback customers</a>
