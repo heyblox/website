@@ -3,6 +3,8 @@ import { withBase } from '../lib/urls';
 
 const year = new Date().getFullYear();
 const appStoreUrl = 'https://apps.shopify.com/blocklist';
+const expertsUrl =
+	'https://shopexperts.com/partners/blox-blocklist-shopify-experts?utm_source=blox&utm_medium=partner&utm_campaign=expert_page';
 ---
 
 <footer class="site-footer">
@@ -14,6 +16,7 @@ const appStoreUrl = 'https://apps.shopify.com/blocklist';
 		<p class="footer-copy">© {year}, Blox Inc.</p>
 		<nav class="footer-nav" aria-label="Legal">
 			<a href={appStoreUrl} rel="noopener noreferrer">Shopify App Store</a>
+			<a href={expertsUrl} rel="noopener noreferrer">Find a Blox Expert</a>
 			<a href={withBase('guides/')}>Guides</a>
 			<a href={withBase('compare/')}>Compare</a>
 			<a href={withBase('faq/')}>FAQ</a>
