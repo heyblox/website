@@ -63,6 +63,17 @@ Source files live in [`assets/`](assets/). Served copies:
 | `/logo-512.png` | `assets/logo_512.png` |
 | `/identity-network.jpg` | network graphic in `assets/` |
 
+`/og.png` is the 1200×630 link-preview image, rendered from [`assets/og-image.html`](assets/og-image.html) with headless Chrome. After editing the template or the logo, regenerate it with:
+
+```bash
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --hide-scrollbars --force-device-scale-factor=1 --window-size=1200,630 --virtual-time-budget=5000 --screenshot="$PWD/public/og.png" "file://$PWD/assets/og-image.html"
+```
+
+## Analytics and cookie consent
+
+Google Analytics loads only on the live site. [`BaseLayout.astro`](src/layouts/BaseLayout.astro) sets Google Consent Mode defaults before the tag loads: ad storage is denied everywhere, and analytics storage is denied in the EEA, UK and Switzerland until the visitor accepts. [`ConsentBanner.astro`](src/components/ConsentBanner.astro) asks on the first visit and saves the choice in `localStorage` (`analytics-consent`); the footer's “Cookie settings” link reopens it. The privacy policy's `#cookies` section describes this, so keep them in step.
+
+
 ## Content / SEO next
 
 Guides collection is scaffolded at `src/content/guides/`. Add Markdown files (set `draft: false`) and extend `src/pages/guides/` when the content program starts.
