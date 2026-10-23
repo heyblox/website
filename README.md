@@ -20,7 +20,9 @@ npm run preview
 
 ## Deploy
 
-Pushes to `main` run [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) and publish `dist/` to GitHub Pages. The same workflow also runs on the 1st and 2nd of each month so the Fraud Index page picks up the new monthly publish.
+Pushes to `main` run [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) and publish `dist/` to GitHub Pages. The same workflow also runs on the 1st and 2nd of each month so the Fraud Index page picks up the new monthly publish. Pull requests run the same build without deploying, and `main` requires that `build` check to pass before merging.
+
+Dependabot ([`.github/dependabot.yml`](.github/dependabot.yml)) opens weekly PRs for npm packages and GitHub Actions.
 
 ## Blox Fraud Index
 
