@@ -30,7 +30,7 @@ Merchants also call this a customer blocklist. Same idea: remember the person, n
 - **The customers who charged back are identified.** Turn on Chargeback Protection and their new orders are held or cancelled before fulfillment, so you do not ship to them again.
 - **The community blocklist is included on every plan, even Free.** Customers blocked by other Blox stores are flagged on yours, so you can review them before you ship.
 
-Blox does not block checkout; it stops the order before it ships. There are no per-transaction fees and no AI black box. Plans are Free (under 100 orders a month), Standard at $19, Growth at $49, and Unlimited at $99 a month.
+There are no per-transaction fees and no AI black box. Plans are Free (under 100 orders a month), Standard at $19, Growth at $49, and Unlimited at $99 a month.
 
 ## What a chargeback blacklist does
 

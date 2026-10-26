@@ -8,8 +8,6 @@ faqs:
     answer: "Yes. If your store uses Shopify Payments, Shopify's free Fraud Control app can block checkouts that match an email address, IP address or address detail you enter. It only matches the exact details in your rules, so a customer who comes back with a new email gets through. A customer blocklist app like Blox blocks the customer instead, by email, phone, address or payment method, and holds or cancels their next order before fulfillment."
   - question: "How do I stop a blocked customer from ordering again under a new email?"
     answer: "Shopify's native rules match the exact email, IP or address you enter, so a new email is not covered. In Blox, customers who use several emails or accounts appear as one profile, and the block applies to the whole profile. Their next order is held for review or cancelled before fulfillment."
-  - question: "Does blocking a customer in Blox stop them at checkout?"
-    answer: "No. Blox does not block checkout. It holds or cancels the order before fulfillment, so nothing ships to a blocked customer. If you need to stop a checkout from completing, use Shopify's Fraud Control checkout rules alongside Blox."
 ---
 
 Yes, you can block a customer on Shopify, with limits. If your store uses Shopify Payments, Shopify's free Fraud Control app can block checkouts that match an email address, IP address or address detail you enter, but only those exact details, so a new email gets around it. [Blox](https://apps.shopify.com/blocklist) blocks the customer instead: block them by email, phone, address or payment method, and their next order is held or cancelled before fulfillment.
@@ -67,7 +65,7 @@ Configure Blox so orders from blocked or high-risk customers are:
 - **Held** for manual review, or
 - **Cancelled** before fulfillment when your policy allows it
 
-Blox does not block checkout. It stops the order before it ships, which is how a block becomes protection on the *next* order, not only a note on the last one.
+Blox stops the order before it ships, which is how a block becomes protection on the *next* order, not only a note on the last one.
 
 ## How to block customers automatically
 

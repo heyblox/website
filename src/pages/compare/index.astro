@@ -22,7 +22,7 @@ const faqs = [
 	{
 		question: 'How is Blox different from Blockify?',
 		answer:
-			'Blockify blocks visitors: IP addresses, countries, VPNs, proxies and bots, plus checkout rules by email, phone or name on some plans. Blox blocks customers by email, phone, address or payment method, shares blocks across stores through a community blocklist, and holds or cancels their orders before fulfillment. Choose Blockify to keep traffic off your store or stop a checkout; choose Blox to stop known customers from getting another order shipped.',
+			'Blockify blocks visitors by IP address, country, VPN, proxy and bots. Blox blocks customers by email, phone, address or payment method, shares blocks across stores through a community blocklist, and holds or cancels their orders before fulfillment.',
 	},
 	{
 		question: 'Can Blox replace a chargeback guarantee from NoFraud or Signifyd?',
@@ -157,14 +157,14 @@ const jsonLd = [
 						<td>Customer blocklist (email, phone, address, payment) shared across stores</td>
 						<td>Order screening with optional chargeback guarantee</td>
 						<td>AI approve/decline with optional chargeback guarantee</td>
-						<td>Visitor blocking (IP, country, VPN, bots) plus checkout rules</td>
+						<td>Visitor blocking (IP, country, VPN, bots)</td>
 					</tr>
 					<tr>
 						<th scope="row">Pricing shape</th>
 						<td>Free under 100 orders/month; $19, $49 or $99/month. No per-transaction fees.</td>
 						<td>Typically a percentage of revenue or a per-order fee</td>
 						<td>Typically a percentage of covered order value</td>
-						<td>Free plan; paid plans from $9.99/month</td>
+						<td>App Store subscription for filter rules</td>
 					</tr>
 					<tr>
 						<th scope="row">Decision style</th>
@@ -231,9 +231,8 @@ const jsonLd = [
 		<h2 id="blox-vs-blockify">Blox vs Blockify: customers vs visitors</h2>
 		<p>
 			<strong>Blockify</strong> blocks <em>visitors</em>: IP addresses, countries, VPNs,
-			proxies, and bots, with checkout rules by email, phone, or name on some plans. If you want
-			to keep traffic off your store or stop a checkout from completing, Blockify is the better
-			fit. Blox does not block checkout.
+			proxies, and bots. It works on traffic, not on a customer you have already decided not to
+			ship to.
 		</p>
 		<p>
 			<strong>Blox blocks <em>customers</em>.</strong> Block fraudsters, chargeback abusers,
@@ -242,7 +241,7 @@ const jsonLd = [
 			community blocklist, so a customer blocked on one Blox store is flagged on others.
 		</p>
 		<p>
-			Blox is built for repeat chargebacks and multi-account abuse. Blockify is built for bots, IP ranges, and country blocking. Many stores could use both. More detail: <a href={withBase('compare/blox-vs-blockify/')}>Blox vs Blockify</a>.
+			Blox is built for repeat chargebacks and multi-account abuse. Blockify is built for bots, IP ranges, and country blocking. More detail: <a href={withBase('compare/blox-vs-blockify/')}>Blox vs Blockify</a>.
 		</p>
 	</section>
 
