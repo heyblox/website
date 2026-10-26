@@ -5,12 +5,12 @@ pubDate: 2026-08-05
 draft: false
 faqs:
   - question: "Is there a way to block a customer on Shopify?"
-    answer: "Yes. If your store uses Shopify Payments, Shopify's free Fraud Control app can block checkouts that match an email address, IP address or address detail you enter. It only matches the exact details in your rules, so a customer who comes back with a new email gets through. A customer blocklist app like Blox blocks the customer instead, by email, phone, address or payment method, and holds or cancels their next order before fulfillment."
+    answer: "Yes. If your store uses Shopify Payments, Shopify's Fraud Control app can block checkouts that match an email address, IP address or address detail you enter. It only matches the exact details in your rules, so a customer who comes back with a new email gets through. A customer blocklist app like Blox blocks the customer instead, by email, phone, address or payment method, and holds or cancels their next order before fulfillment."
   - question: "How do I stop a blocked customer from ordering again under a new email?"
     answer: "Shopify's native rules match the exact email, IP or address you enter, so a new email is not covered. In Blox, customers who use several emails or accounts appear as one profile, and the block applies to the whole profile. Their next order is held for review or cancelled before fulfillment."
 ---
 
-Yes, you can block a customer on Shopify, with limits. If your store uses Shopify Payments, Shopify's free Fraud Control app can block checkouts that match an email address, IP address or address detail you enter, but only those exact details, so a new email gets around it. [Blox](https://apps.shopify.com/blocklist) blocks the customer instead: block them by email, phone, address or payment method, and their next order is held or cancelled before fulfillment.
+Yes, you can block a customer on Shopify, with limits. If your store uses Shopify Payments, Shopify's Fraud Control app can block checkouts that match an email address, IP address or address detail you enter, but only those exact details, so a new email gets around it. [Blox](https://apps.shopify.com/blocklist) blocks the customer instead: block them by email, phone, address or payment method, and their next order is held or cancelled before fulfillment.
 
 ## Why merchants need to block customers
 
@@ -28,7 +28,7 @@ If the same person returns under a new email, a one-off cancel does not protect 
 
 Shopify has no single “block customer” button, but it gives you a few native options:
 
-1. **Fraud Control checkout rules.** Shopify's Fraud Control app lets you write rules that block a checkout matching an email address, IP address, or address detail such as a ZIP code. Blocked checkouts show up in abandoned checkouts, and the buyer is told to contact the store. Checkout rules are only available to stores using Shopify Payments.
+1. **Fraud Control checkout rules.** Shopify's Fraud Control app lets you write rules that block a checkout matching an email address, IP address, or address detail such as a ZIP code. The buyer sees an error that the checkout couldn't be completed, and the blocked checkout shows up in abandoned checkouts. Checkout rules are only available to stores using Shopify Payments.
 2. **Shopify Flow.** Flow workflows can act on new orders, for example cancelling orders from customers on a block list you maintain.
 3. **Cancel or refund the order** in Shopify admin so you do not fulfill a bad purchase. Cancelling does not stop the cardholder's bank from accepting a chargeback.
 4. **Customer tags and notes** (for example `blocked` or `high-risk`) so staff can spot the customer later.
