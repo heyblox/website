@@ -4,9 +4,9 @@ import { withBase } from '../../lib/urls';
 
 const appStoreUrl = 'https://apps.shopify.com/blocklist';
 const pageUrl = 'https://heyblox.com/compare/';
-const title = 'Blox vs NoFraud, Signifyd, and Blockify';
+const title = 'Blox vs NoFraud, Signifyd and Blockify for Shopify';
 const description =
-	'Compare Blox to NoFraud, Signifyd, and Blockify: no per-transaction fees, no AI black box, and a community customer blocklist for Shopify fraud prevention.';
+	'Blox blocks customers by email, phone, address or payment. NoFraud and Signifyd score orders. Blockify blocks visitors by IP, country and bots.';
 
 const faqs = [
 	{
@@ -22,7 +22,7 @@ const faqs = [
 	{
 		question: 'How is Blox different from Blockify?',
 		answer:
-			'Blockify is typically used as an IP, bot, and country fraud filter. Blox is a community customer blocklist with automatic identity linking, so a block follows the person across emails, accounts, and participating stores.',
+			'Blockify blocks visitors by IP address, country, VPN, proxy and bots. Blox blocks customers by email, phone, address or payment method, shares blocks across stores through a community blocklist, and holds or cancels their orders before fulfillment.',
 	},
 	{
 		question: 'Can Blox replace a chargeback guarantee from NoFraud or Signifyd?',
@@ -32,7 +32,7 @@ const faqs = [
 	{
 		question: 'Does Blox have a community blocklist?',
 		answer:
-			'Yes. When one store flags fraud, other participating stores can be protected. Network matches are flagged for you to review, hold, or auto-cancel before fulfillment.',
+			'Yes, on every plan including Free. When one store blocks a customer, other Blox stores see that customer flagged, so they can review, hold, or cancel the order before fulfillment.',
 	},
 	{
 		question: 'Can Blox automatically cancel orders from blocked customers?',
@@ -129,7 +129,7 @@ const jsonLd = [
 	<span class="section-label">Comparison</span>
 	<h1>Blox vs NoFraud, Signifyd, and Blockify</h1>
 	<p class="section-lead">
-		<strong>Blox</strong> is a Shopify community customer blocklist: no per-transaction fees, no AI black box, and a shared ban that follows the person. <strong>NoFraud</strong> and <strong>Signifyd</strong> score checkouts and often sell a chargeback guarantee. <strong>Blockify</strong> filters traffic by IP, bot, and country. Monthly network stats are on the <a href={withBase('fraud-index/')}>Blox Fraud Index</a>.
+		<strong>Blox</strong> blocks <em>customers</em> on Shopify by email, phone, address or payment method, with a community blocklist shared across stores, no per-transaction fees and no AI black box. <strong>NoFraud</strong> and <strong>Signifyd</strong> score orders and often sell a chargeback guarantee. <strong>Blockify</strong> blocks <em>visitors</em> by IP, country, VPN and bots. Monthly network stats are on the <a href={withBase('fraud-index/')}>Blox Fraud Index</a>.
 	</p>
 
 	<ul class="compare__jump">
@@ -154,14 +154,14 @@ const jsonLd = [
 				<tbody>
 					<tr>
 						<th scope="row">Primary model</th>
-						<td>Community customer blocklist with automatic identity linking</td>
+						<td>Customer blocklist (email, phone, address, payment) shared across stores</td>
 						<td>Order screening with optional chargeback guarantee</td>
 						<td>AI approve/decline with optional chargeback guarantee</td>
-						<td>Fraud filtering / blockers (IP, bot, country)</td>
+						<td>Visitor blocking (IP, country, VPN, bots)</td>
 					</tr>
 					<tr>
 						<th scope="row">Pricing shape</th>
-						<td>Flat monthly Shopify subscription. No per-transaction fees.</td>
+						<td>Free under 100 orders/month; $19, $49 or $99/month. No per-transaction fees.</td>
 						<td>Typically a percentage of revenue or a per-order fee</td>
 						<td>Typically a percentage of covered order value</td>
 						<td>App Store subscription for filter rules</td>
@@ -175,7 +175,7 @@ const jsonLd = [
 					</tr>
 					<tr>
 						<th scope="row">Cross-store memory</th>
-						<td>Yes: when one store flags fraud, others can be protected</td>
+						<td>Yes: customers blocked on one Blox store are flagged on others</td>
 						<td>Network used to score this checkout</td>
 						<td>Commerce network used to score this checkout</td>
 						<td>Not a shared customer blocklist</td>
@@ -185,7 +185,7 @@ const jsonLd = [
 						<td>Repeat chargebacks, serial returners, refund abuse, duplicate accounts</td>
 						<td>Unknown checkout fraud you want guaranteed</td>
 						<td>Unknown checkout fraud you want guaranteed</td>
-						<td>Bots, unwanted geos, session-level abuse</td>
+						<td>Bots, unwanted countries, VPN and proxy traffic</td>
 					</tr>
 				</tbody>
 			</table>
@@ -201,8 +201,8 @@ const jsonLd = [
 		</p>
 		<p>
 			<strong>Blox does not charge per-transaction fees.</strong> It is a flat monthly Shopify
-			subscription. You block a customer once, identity linking covers the aliases, and you are
-			not billed a cut of every order for using the blocklist.
+			subscription. You block a customer once, and you are not billed a cut of every order for
+			using the blocklist.
 		</p>
 		<p>
 			Blox is built for the same person coming back, at a flat monthly price. NoFraud screens unknown checkouts and, on paid plans, guarantees the ones it passes.
@@ -219,8 +219,7 @@ const jsonLd = [
 		</p>
 		<p>
 			<strong>Blox has no AI black box as the primary control.</strong> You block by email,
-			phone, address, or payment. Accounts are grouped into one profile automatically. Holds and
-			cancels follow simple rules you set. When another store on the network flags the same
+			phone, address, or payment. Holds and cancels follow simple rules you set. When another store on the network flags the same
 			identity, you get a review signal you can act on, not an unexplained score.
 		</p>
 		<p>
@@ -229,20 +228,20 @@ const jsonLd = [
 	</section>
 
 	<section class="compare__block" aria-labelledby="blox-vs-blockify">
-		<h2 id="blox-vs-blockify">Blox vs Blockify: community blocklist</h2>
+		<h2 id="blox-vs-blockify">Blox vs Blockify: customers vs visitors</h2>
 		<p>
-			<strong>Blockify</strong> is commonly used as a fraud-filtering toolkit oriented around IP,
-			bots, and country-style controls. It is closer to “score and filter the session” than
-			“remember this customer forever across stores.”
+			<strong>Blockify</strong> blocks <em>visitors</em>: IP addresses, countries, VPNs,
+			proxies, and bots. It works on traffic, not on a customer you have already decided not to
+			ship to.
 		</p>
 		<p>
-			<strong>Blox is a community customer blocklist.</strong> Every identifier a customer uses
-			is grouped into one profile automatically. Blocking fraudsters, chargeback abusers, serial
-			returners, and refund abusers takes one action, and that decision is shared across a
-			merchant network. When one store flags fraud, others can be protected.
+			<strong>Blox blocks <em>customers</em>.</strong> Block fraudsters, chargeback abusers,
+			serial returners, and refund abusers by email, phone, address, or payment method, and
+			their next order is held or cancelled before fulfillment. Blocks are shared through a
+			community blocklist, so a customer blocked on one Blox store is flagged on others.
 		</p>
 		<p>
-			Blox is built for repeat chargebacks and multi-account abuse. Blockify is a filter-first app for bots, IP ranges, and country blocking. More detail: <a href={withBase('compare/blox-vs-blockify/')}>Blox vs Blockify</a>.
+			Blox is built for repeat chargebacks and multi-account abuse. Blockify is built for bots, IP ranges, and country blocking. More detail: <a href={withBase('compare/blox-vs-blockify/')}>Blox vs Blockify</a>.
 		</p>
 	</section>
 
@@ -273,5 +272,7 @@ const jsonLd = [
 		<a href={withBase('guides/blocklist-vs-fraud-filter/')}>Blocklist vs fraud filter</a>
 		<span aria-hidden="true">·</span>
 		<a href={withBase('compare/blox-vs-blockify/')}>Blox vs Blockify</a>
+		<span aria-hidden="true">·</span>
+		<a href={withBase('guides/how-to-block-a-customer-on-shopify/')}>How to block a customer on Shopify</a>
 	</p>
 </CompareLayout>

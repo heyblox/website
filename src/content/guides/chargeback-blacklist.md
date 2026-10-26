@@ -1,6 +1,6 @@
 ---
-title: "What is a chargeback blacklist?"
-description: "A chargeback blacklist is a list of customers known for disputes, return fraud, and support abuse. See what it does and when Shopify merchants use one."
+title: "Chargeback Blacklist: What It Is and How It Works"
+description: "A chargeback blacklist stops customers who charged back from getting another order shipped. How it works, and how Blox builds one from past chargebacks."
 pubDate: 2026-09-15
 draft: false
 faqs:
@@ -13,12 +13,24 @@ faqs:
   - question: "Is a chargeback blacklist the same as a fraud filter?"
     answer: "No. A fraud filter scores how risky a checkout looks. A chargeback blacklist enforces a decision you have already made about a person. Filters help on unknown traffic. Blacklists help when the customer is known."
   - question: "How do I add a customer to a chargeback blacklist on Shopify?"
-    answer: "Native Shopify tags and notes do not stop a new email. Add the customer to a chargeback blacklist so the next order can be held or cancelled before it ships."
+    answer: "Native Shopify tags and notes do not stop a new email. Install Blox and your past chargebacks are imported automatically, with the customers behind them identified. Turn on Chargeback Protection and their new orders are held or cancelled before fulfillment. You can also block any customer by email, phone, address, or payment method."
+  - question: "Is the community blocklist included on the free plan?"
+    answer: "Yes. Blox includes the community blocklist on every plan, including Free. Customers blocked by other Blox stores are flagged on yours so you can review them before you ship."
 ---
 
-A **chargeback blacklist** is a list of shoppers a store has already decided not to sell to again. That usually means chargebacks, friendly fraud, return fraud, or customer support abuse — not a one-off cancelled order. The list’s job is simple: the next time that person tries to buy, the order is held or cancelled **before fulfillment**.
+A **chargeback blacklist** is a list of customers a store will not ship to again because they filed chargebacks or disputed payments. Many stores add friendly fraud, return fraud, and customer support abuse too. Its job is simple: the next time that person orders, the order is held or cancelled **before fulfillment**.
 
 Merchants also call this a customer blocklist. Same idea: remember the person, not just the order.
+
+## How Blox works as a chargeback blacklist
+
+[Blox](https://apps.shopify.com/blocklist) is a chargeback blacklist for Shopify:
+
+- **Past chargebacks are imported automatically** when you install the app. There is nothing to set up or sync.
+- **The customers who charged back are identified.** Turn on Chargeback Protection and their new orders are held or cancelled before fulfillment, so you do not ship to them again.
+- **The community blocklist is included on every plan, even Free.** Customers blocked by other Blox stores are flagged on yours, so you can review them before you ship.
+
+There are no per-transaction fees and no AI black box. Plans are Free (under 100 orders a month), Standard at $19, Growth at $49, and Unlimited at $99 a month.
 
 ## What a chargeback blacklist does
 
@@ -106,21 +118,21 @@ A list only helps if it can enforce the decision you already made. In practice t
 - Staff can explain why someone is on the list
 - You are not the only store that has to discover the same person from scratch
 
-That is the job [Blox](https://apps.shopify.com/blocklist) is built for: a chargeback blacklist for Shopify merchants.
+That is the job [Blox](https://apps.shopify.com/blocklist) is built for: a chargeback blacklist for Shopify merchants that starts with the chargebacks you already have.
 
 ## How merchants use a chargeback blacklist
 
 A typical workflow is:
 
-1. Confirm the abuse (a lost chargeback, return fraud, support abuse, or a serial returner you will not serve again).
-2. Add that customer to the blacklist.
-3. Stop matching orders before they ship.
+1. Start from the chargebacks you already have. In Blox, they are imported when you install.
+2. Add other confirmed abusers (return fraud, support abuse, or a serial returner you will not serve again).
+3. Hold or cancel their orders before they ship.
 
-For the Shopify walkthrough, see [How to block repeat chargeback customers with Blox](../how-to-block-repeat-chargeback-customers/) and [How to block or blacklist a customer on Shopify](../how-to-block-a-customer-on-shopify/).
+For the Shopify walkthrough, see [How to block repeat chargeback customers with Blox](../how-to-block-repeat-chargeback-customers/) and [how to block a customer on Shopify](../how-to-block-a-customer-on-shopify/).
 
 ## Related reading
 
-- [How to block or blacklist a customer on Shopify](../how-to-block-a-customer-on-shopify/)
+- [How to block a customer on Shopify](../how-to-block-a-customer-on-shopify/)
 - [How to block repeat chargeback customers with Blox](../how-to-block-repeat-chargeback-customers/)
 - [Blocklist vs fraud filter: when to use each](../blocklist-vs-fraud-filter/)
 - [FAQ: Shopify fraud, chargebacks, and blocklists](../../faq/)

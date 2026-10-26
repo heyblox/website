@@ -6,31 +6,31 @@ const appStoreUrl = 'https://apps.shopify.com/blocklist';
 ---
 
 <CompareLayout
-	title="Blox vs Blockify: blocklist-first vs fraud scoring"
-	description="Compare Blox and Blockify for Shopify fraud prevention: community customer blocklist and identity linking vs IP, bot, and country-style fraud filtering."
+	title="Blox vs Blockify: Block Customers or Block Visitors?"
+	description="Blox blocks customers by email, phone, address or payment, shared across stores. Blockify blocks visitors by IP, country, VPN and bots. See which fits."
 >
 	<span class="section-label">Comparison</span>
-	<h1>Blox vs Blockify: blocklist-first vs fraud scoring</h1>
+	<h1>Blox vs Blockify: block customers or block visitors?</h1>
 	<p class="section-lead">
-		Merchants searching for Shopify <strong>fraud prevention</strong> often compare a <em>customer blocklist</em> to a <em>fraud filter</em>. Here’s a clear head-to-head. For NoFraud and Signifyd as well, see <a href={withBase('compare/')}>Blox vs NoFraud, Signifyd, and Blockify</a>. Monthly network stats: <a href={withBase('fraud-index/')}>Blox Fraud Index</a>.
+		Blox and Blockify both block things on Shopify, but different things. <strong>Blox blocks customers</strong>: people you, or another store, have already decided not to ship to. <strong>Blockify blocks visitors</strong>: traffic by IP, country, VPN, and bots. Here’s a fair head-to-head. For NoFraud and Signifyd as well, see <a href={withBase('compare/')}>Blox vs NoFraud, Signifyd, and Blockify</a>. Monthly network stats: <a href={withBase('fraud-index/')}>Blox Fraud Index</a>.
 	</p>
 
 	<section class="compare__block" aria-labelledby="positioning">
 		<h2 id="positioning">The short version</h2>
 		<p>
-			<strong>Blox</strong> is blocklist-first: every identifier a customer uses is grouped
-			into one profile automatically, so blocking fraudsters, chargeback abusers, serial
-			returners, and refund abusers takes one action, and that decision is shared across a
-			merchant network.
+			<strong>Blox</strong> is a customer blocklist. Block fraudsters, chargeback abusers,
+			serial returners, and refund abusers by email, phone, address, or payment method, and
+			their next order is held or cancelled before fulfillment. Past chargebacks are imported
+			when you install, and the community blocklist, included on every plan, flags customers
+			blocked by other Blox stores.
 		</p>
 		<p>
-			<strong>Blockify</strong> is commonly used as a fraud-filtering / blocking toolkit
-			oriented around signals like IP, bots, and country-style controls (plus a large App
-			Store footprint). It’s closer to “score and filter the session” than “remember this
-			customer forever across stores.”
+			<strong>Blockify</strong> blocks visitors by IP address, country, VPN, proxy, and bots.
+			It works on traffic, not on a customer you have already decided not to ship to.
 		</p>
 		<p>
-			Blox is built for <strong>repeat chargebacks</strong> and multi-account abuse. Blockify is a filter-first app for bots and geo/IP noise.
+			If your problem is <strong>repeat chargebacks</strong>, refund abuse, or the same
+			customer coming back under a new email, Blox is built for it.
 		</p>
 	</section>
 
@@ -42,36 +42,37 @@ const appStoreUrl = 'https://apps.shopify.com/blocklist';
 					<tr>
 						<th>Dimension</th>
 						<th>Blox</th>
-						<th>Blockify (typical use)</th>
+						<th>Blockify</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
 						<th scope="row">Primary model</th>
-						<td>Community customer blocklist with automatic identity linking</td>
-						<td>Fraud filtering / blockers (IP, bot, country, etc.)</td>
+						<td>Blocks customers by email, phone, address, or payment</td>
+						<td>Blocks visitors by IP, country, VPN, proxy, and bots</td>
 					</tr>
 					<tr>
 						<th scope="row">Best against</th>
 						<td>Chargebacks, serial returners, refund abuse, duplicate accounts</td>
-						<td>Bots, unwanted geos, session-level abuse patterns</td>
+						<td>Bots, unwanted countries, VPN and proxy traffic</td>
 					</tr>
 					<tr>
-						<th scope="row">Decision style</th>
-						<td>Explicit block; simple rules; network flags for review</td>
-						<td>Filter / score / block traffic patterns</td>
+						<th scope="row">Where it acts</th>
+						<td>Holds or cancels the customer’s order before fulfillment</td>
+						<td>Blocks the visit</td>
 					</tr>
 					<tr>
 						<th scope="row">Cross-store memory</th>
-						<td>Yes: when one store flags fraud, others can be protected</td>
-						<td>Not the core product story</td>
+						<td>Yes: community blocklist on every plan, including Free</td>
+						<td>Not a shared customer blocklist</td>
 					</tr>
 					<tr>
-						<th scope="row">Shopify focus</th>
+						<th scope="row">Pricing</th>
 						<td>
+							Free under 100 orders/month; $19, $49, or $99/month. No per-transaction fees.
 							<a href={appStoreUrl} rel="noopener noreferrer">Blox on the App Store</a>
 						</td>
-						<td>Large installed base; filter-oriented positioning</td>
+						<td>Subscription plans for filter rules</td>
 					</tr>
 				</tbody>
 			</table>
@@ -93,5 +94,7 @@ const appStoreUrl = 'https://apps.shopify.com/blocklist';
 		<a href={withBase('guides/how-to-block-repeat-chargeback-customers/')}>How to block repeat chargeback customers</a>
 		<span aria-hidden="true">·</span>
 		<a href={withBase('guides/blocklist-vs-fraud-filter/')}>Blocklist vs fraud filter</a>
+		<span aria-hidden="true">·</span>
+		<a href={withBase('guides/how-to-block-a-customer-on-shopify/')}>How to block a customer on Shopify</a>
 	</p>
 </CompareLayout>

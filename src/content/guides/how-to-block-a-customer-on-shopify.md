@@ -1,11 +1,16 @@
 ---
-title: "How to block or blacklist a customer on Shopify"
-description: "How to block or blacklist a customer on Shopify, from native tools to a customer blocklist that stops repeat abusers across emails and accounts."
+title: "How to Block a Customer on Shopify"
+description: "Shopify's Fraud Control app can block checkouts by email, IP or address. Here are its limits, and how Blox stops a blocked customer's next order."
 pubDate: 2026-08-05
 draft: false
+faqs:
+  - question: "Is there a way to block a customer on Shopify?"
+    answer: "Yes. If your store uses Shopify Payments, Shopify's free Fraud Control app can block checkouts that match an email address, IP address or address detail you enter. It only matches the exact details in your rules, so a customer who comes back with a new email gets through. A customer blocklist app like Blox blocks the customer instead, by email, phone, address or payment method, and holds or cancels their next order before fulfillment."
+  - question: "How do I stop a blocked customer from ordering again under a new email?"
+    answer: "Shopify's native rules match the exact email, IP or address you enter, so a new email is not covered. In Blox, customers who use several emails or accounts appear as one profile, and the block applies to the whole profile. Their next order is held for review or cancelled before fulfillment."
 ---
 
-Shopify makes it easy to cancel an order. Blocking a *customer* so they cannot keep costing you money is harder. This guide covers what you can do natively, where those options fall short, and how to put a lasting block in place with [Blox](https://apps.shopify.com/blocklist).
+Yes, you can block a customer on Shopify, with limits. If your store uses Shopify Payments, Shopify's free Fraud Control app can block checkouts that match an email address, IP address or address detail you enter, but only those exact details, so a new email gets around it. [Blox](https://apps.shopify.com/blocklist) blocks the customer instead: block them by email, phone, address or payment method, and their next order is held or cancelled before fulfillment.
 
 ## Why merchants need to block customers
 
@@ -19,66 +24,70 @@ Stores typically block people for:
 
 If the same person returns under a new email, a one-off cancel does not protect the next order.
 
-## What you can do in Shopify without an app
+## Can you block a customer on Shopify?
 
-Native options help for light control, but they are not a full blocklist:
+Shopify has no single “block customer” button, but it gives you a few native options:
 
-1. **Cancel or refund the order** in Admin so you do not fulfill a bad purchase.
-2. **Add a customer tag** (for example `blocked` or `high-risk`) so staff can spot them later.
-3. **Leave an internal note** on the customer profile for your team.
-4. **Use Shopify’s fraud / risk indicators** on the order as a review signal.
+1. **Fraud Control checkout rules.** Shopify's Fraud Control app lets you write rules that block a checkout matching an email address, IP address, or address detail such as a ZIP code. Blocked checkouts show up in abandoned checkouts, and the buyer is told to contact the store. Checkout rules are only available to stores using Shopify Payments.
+2. **Shopify Flow.** Flow workflows can act on new orders, for example cancelling orders from customers on a block list you maintain.
+3. **Cancel or refund the order** in Shopify admin so you do not fulfill a bad purchase. Cancelling does not stop the cardholder's bank from accepting a chargeback.
+4. **Customer tags and notes** (for example `blocked` or `high-risk`) so staff can spot the customer later.
 
-What native tools usually do *not* do well:
+Where native options fall short:
 
-- Stop the same person when they check out with a different email or phone
-- Share known bad actors across other stores
-- Auto-hold or auto-cancel the next order based on a prior ban
-- Link address and payment identity to the person you already blocked
-
-Tags and notes only work if the shopper reuses the exact same details. Most repeat abusers do not.
+- Rules match the exact email, IP or address you typed. A new email, a new address or a different network gets through.
+- Checkout rules need Shopify Payments.
+- Each store keeps its own list. You cannot see customers other merchants have already blocked.
+- Tags and notes rely on staff noticing them before the order ships.
 
 For many merchants, that gap is the whole problem.
 
 ## How to block a customer with Blox
 
-Blox is a **customer blocklist** (also called a customer blacklist) for Shopify. Blox automatically groups every identifier it sees, so email, phone, address, and payment all resolve to one customer profile.
+Blox is a **customer blocklist** (also called a customer blacklist) for Shopify. You block the customer, not a single email, and Blox holds or cancels their next order before fulfillment.
 
 ### 1. Install Blox
 
-Open [Blox: Block Customer Blacklist](https://apps.shopify.com/blocklist) and install it on your store. A free plan is available; paid plans include a trial.
+Open [Blox: Block Customer Blacklist](https://apps.shopify.com/blocklist) and install it on your store. The Free plan covers stores with under 100 orders a month; paid plans start at $19/month with a 30-day trial. There are no per-transaction fees.
 
 ### 2. Find the customer
 
-Search any single identifier you already have. One email, phone number, or address is enough to pull up the full profile, including the other accounts that person uses.
+Search by email, phone number or address. Customers who use several emails or accounts appear as one profile, so you see the other accounts that person uses.
 
 ### 3. Block them
 
 Block the customer in Blox. The block applies to the whole profile, not just the identifier you happened to search, so a new email does not reset it.
 
-### 4. Choose hold vs cancel for future matches
+### 4. Choose hold vs cancel for future orders
 
-Configure Blox so high-risk or blocked matches are:
+Configure Blox so orders from blocked or high-risk customers are:
 
 - **Held** for manual review, or
-- **Auto-canceled** before fulfillment when your policy allows it
+- **Cancelled** before fulfillment when your policy allows it
 
-That is how a block becomes protection on the *next* order, not only documentation on the last one.
+Blox stops the order before it ships, which is how a block becomes protection on the *next* order, not only a note on the last one.
 
-### 5. Duplicate accounts are handled for you
+## How to block customers automatically
 
-Abusers rotate emails. Blox links those accounts automatically, so there is nothing to reconcile by hand and “new customer” does not mean “clean slate.”
+You do not have to find every bad customer yourself:
+
+- **Past chargebacks are imported on install.** Blox identifies the customers behind them. Turn on Chargeback Protection and their new orders are held or cancelled before fulfillment.
+- **The community blocklist is on every plan, including Free.** Customers blocked by other Blox stores are flagged for you automatically, so you can review them before you ship.
+- **Duplicate accounts are grouped for you.** A customer who switches emails still shows up as the same person, with nothing to merge by hand.
+
+Rules stay simple and visible. There is no AI black box deciding who gets blocked.
 
 ## Native tools vs a blocklist
 
 | Goal | Shopify native | Blox blocklist |
 | --- | --- | --- |
-| Stop one bad order | Cancel / refund | Cancel / hold with rules |
-| Warn your team later | Tags and notes | Block + network flags |
-| Stop new emails / aliases | Weak | Automatic identity linking |
-| Learn from other stores | No | Community blocklist |
-| Enforce before fulfillment | Manual process | Hold / auto-cancel |
+| Stop one bad order | Cancel / refund | Hold or cancel before fulfillment |
+| Block an exact email, IP or address | Fraud Control checkout rules (Shopify Payments) | Block by email, phone, address or payment |
+| Stop the same person on a new email | Weak | Duplicate accounts grouped into one profile |
+| Learn from other stores | No | Community blocklist, every plan |
+| Catch past chargeback customers | Manual | Imported on install |
 
-Use native tools for process and documentation. Use a blocklist when you need the ban to stick.
+Use native tools for exact-match rules and documentation. Use a blocklist when you need the block to stick to the person.
 
 ## Related guides
 
@@ -87,7 +96,7 @@ Use native tools for process and documentation. Use a blocklist when you need th
 - [Blocklist vs fraud filter: when to use each](../blocklist-vs-fraud-filter/)
 - [FAQ: Shopify fraud, chargebacks, and blocklists](../../faq/)
 - [Blox vs NoFraud, Signifyd, and Blockify](../../compare/)
-- [Blox vs Blockify: blocklist-first vs fraud scoring](../../compare/blox-vs-blockify/)
+- [Blox vs Blockify: block customers or block visitors?](../../compare/blox-vs-blockify/)
 
 ## Next step
 
