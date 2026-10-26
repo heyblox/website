@@ -30,7 +30,7 @@ A blocklist is **fraud prevention by memory**:
 - You want holds or cancels **before fulfillment**
 - You’re fighting **refund abuse**, repeat chargebacks, and multi-account hopping
 
-[Blox](https://apps.shopify.com/blocklist) is blocklist-first: accounts are deduplicated into one customer profile automatically, so blocking by email, phone, address, or payment blocks the person, and that decision is shared across participating stores. Simple rules, not an opaque AI score as the primary control.
+[Blox](https://apps.shopify.com/blocklist) is blocklist-first: accounts are deduplicated into one customer profile automatically, so blocking by email, phone, address, or payment blocks the person, and that decision is shared across participating stores. Simple rules, not an opaque AI score as the primary control. For the step-by-step, see [how to block a customer on Shopify](../how-to-block-a-customer-on-shopify/).
 
 ## When to use each
 
@@ -57,11 +57,11 @@ If your only tool is scoring, repeat offenders will keep resetting the game. If 
 ## Related reading
 
 - [What is a chargeback blacklist?](../chargeback-blacklist/)
-- [How to block or blacklist a customer on Shopify](../how-to-block-a-customer-on-shopify/)
+- [How to block a customer on Shopify](../how-to-block-a-customer-on-shopify/)
 - [How to block repeat chargeback customers with Blox](../how-to-block-repeat-chargeback-customers/)
 - [FAQ: Shopify fraud, chargebacks, and blocklists](../../faq/)
 - [Blox vs NoFraud, Signifyd, and Blockify](../../compare/)
-- [Blox vs Blockify: blocklist-first vs fraud scoring](../../compare/blox-vs-blockify/)
+- [Blox vs Blockify: block customers or block visitors?](../../compare/blox-vs-blockify/)
 
 ## Next step
 

@@ -33,6 +33,8 @@ When you confirm a bad actor:
 2. **Block** the customer. The ban covers every account and identifier linked to that person.
 3. Prefer blocking the *person* early rather than waiting for another paid order to cancel after the fact.
 
+For what Shopify can and cannot do natively, see [how to block a customer on Shopify](../how-to-block-a-customer-on-shopify/).
+
 Blocking contributes to the community blocklist so other stores can see shared risk when the same identity appears.
 
 ## Step 3: Use holds and cancels before fulfillment
@@ -63,7 +65,7 @@ When another merchant blocks someone who later shops with you, treat that as a s
 
 Scores and filters are useful for “how risky is this checkout?” A **blocklist** answers “have we (or the network) already decided this customer is not welcome?” For repeat chargebacks and serial returners, that second question is usually the one that protects profit.
 
-For a deeper comparison, read [What is a chargeback blacklist?](../chargeback-blacklist/), [How to block or blacklist a customer on Shopify](../how-to-block-a-customer-on-shopify/), [Blocklist vs fraud filter: when to use each](../blocklist-vs-fraud-filter/), [FAQ: Shopify fraud, chargebacks, and blocklists](../../faq/), [Blox vs NoFraud, Signifyd, and Blockify](../../compare/), and [Blox vs Blockify](../../compare/blox-vs-blockify/).
+For a deeper comparison, read [What is a chargeback blacklist?](../chargeback-blacklist/), [how to block a customer on Shopify](../how-to-block-a-customer-on-shopify/), [Blocklist vs fraud filter: when to use each](../blocklist-vs-fraud-filter/), [FAQ: Shopify fraud, chargebacks, and blocklists](../../faq/), [Blox vs NoFraud, Signifyd, and Blockify](../../compare/), and [Blox vs Blockify](../../compare/blox-vs-blockify/).
 
 ## Next step
 
