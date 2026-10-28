@@ -1,8 +1,7 @@
 ---
 import CompareLayout from '../../layouts/CompareLayout.astro';
-import { withBase } from '../../lib/urls';
+import { APP_STORE_URL, appStoreUrl, withBase } from '../../lib/urls';
 
-const appStoreUrl = 'https://apps.shopify.com/blocklist';
 const pageUrl = 'https://heyblox.com/compare/';
 const title = 'Blox vs NoFraud, Signifyd and Blockify for Shopify';
 const description =
@@ -59,7 +58,7 @@ const jsonLd = [
 			applicationCategory: 'BusinessApplication',
 			operatingSystem: 'Shopify',
 			url: 'https://heyblox.com',
-			downloadUrl: appStoreUrl,
+			downloadUrl: APP_STORE_URL,
 		},
 		mentions: [
 			{ '@type': 'SoftwareApplication', name: 'NoFraud' },
@@ -258,7 +257,7 @@ const jsonLd = [
 	</section>
 
 	<p class="compare__cta">
-		<a class="btn" href={appStoreUrl} rel="noopener noreferrer">Install Blox on Shopify</a>
+		<a class="btn" href={appStoreUrl('compare-cta')} rel="noopener noreferrer">Install Blox on Shopify</a>
 	</p>
 	<p class="compare__more">
 		<a href={withBase('fraud-index/')}>Blox Fraud Index</a>

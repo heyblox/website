@@ -1,7 +1,6 @@
 ---
-import { withBase } from '../lib/urls';
+import { appStoreUrl, withBase } from '../lib/urls';
 
-const appStoreUrl = 'https://apps.shopify.com/blocklist';
 ---
 
 <header class="site-header">
@@ -15,7 +14,7 @@ const appStoreUrl = 'https://apps.shopify.com/blocklist';
 			<a href={withBase('compare/')}>Compare</a>
 			<a href={withBase('guides/')}>Guides</a>
 			<a href={withBase('faq/')}>FAQ</a>
-			<a class="btn site-nav__cta" href={appStoreUrl} rel="noopener noreferrer">
+			<a class="btn site-nav__cta" href={appStoreUrl('header')} rel="noopener noreferrer">
 				Install
 			</a>
 		</nav>
