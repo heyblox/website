@@ -1,9 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
-import { withBase } from '../lib/urls';
+import { APP_STORE_URL, appStoreUrl, withBase } from '../lib/urls';
 
-const appStoreUrl = 'https://apps.shopify.com/blocklist';
 
 const jsonLd = [
 	{
@@ -22,7 +21,7 @@ const jsonLd = [
 		applicationCategory: 'BusinessApplication',
 		operatingSystem: 'Shopify',
 		url: 'https://heyblox.com',
-		downloadUrl: appStoreUrl,
+		downloadUrl: APP_STORE_URL,
 		offers: {
 			'@type': 'Offer',
 			price: '0',
@@ -133,7 +132,7 @@ const jsonLd = [
 				Install Blox from the Shopify App Store and turn every block into shared
 				protection.
 			</p>
-			<a class="btn" href={appStoreUrl} rel="noopener noreferrer">
+			<a class="btn" href={appStoreUrl('home-cta')} rel="noopener noreferrer">
 				Install on Shopify
 			</a>
 		</div>

@@ -1,6 +1,8 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import { satteri } from '@astrojs/markdown-satteri';
+import { appStoreLinksPlugin } from './src/lib/appStoreLinksPlugin';
 
 // https://astro.build/config
 // Custom domain heyblox.com is served at the site root.
@@ -8,6 +10,9 @@ export default defineConfig({
 	site: 'https://heyblox.com',
 	base: '/',
 	trailingSlash: 'always',
+	markdown: {
+		processor: satteri({ hastPlugins: [appStoreLinksPlugin] }),
+	},
 	integrations: [
 		sitemap({
 			// Legacy /website/* cutover redirects must not appear in the sitemap.

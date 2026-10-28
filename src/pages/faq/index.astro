@@ -1,8 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { withBase } from '../../lib/urls';
+import { APP_STORE_URL, appStoreUrl, withBase } from '../../lib/urls';
 
-const appStoreUrl = 'https://apps.shopify.com/blocklist';
 const pageUrl = 'https://heyblox.com/faq/';
 const title = 'FAQ: Shopify fraud, chargebacks, and customer blocklists';
 const description =
@@ -77,7 +76,7 @@ const jsonLd = [
 			applicationCategory: 'BusinessApplication',
 			operatingSystem: 'Shopify',
 			url: 'https://heyblox.com',
-			downloadUrl: appStoreUrl,
+			downloadUrl: APP_STORE_URL,
 		},
 	},
 	{
@@ -133,7 +132,7 @@ const jsonLd = [
 			}
 
 			<p class="faq__cta">
-				<a class="btn" href={appStoreUrl} rel="noopener noreferrer">Install Blox on Shopify</a>
+				<a class="btn" href={appStoreUrl('faq')} rel="noopener noreferrer">Install Blox on Shopify</a>
 			</p>
 			<p class="faq__more">
 				<a href={withBase('guides/how-to-block-a-customer-on-shopify/')}>How to block a customer on Shopify</a>

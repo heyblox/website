@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { withBase } from '../lib/urls';
+import { APP_STORE_URL, appStoreUrl, guidePlacement, withBase } from '../lib/urls';
 
 interface Faq {
 	question: string;
@@ -8,20 +8,20 @@ interface Faq {
 }
 
 interface Props {
+	id: string;
 	title: string;
 	description: string;
 	pubDate: Date;
 	faqs?: Faq[];
 }
 
-const { title, description, pubDate, faqs = [] } = Astro.props;
+const { id, title, description, pubDate, faqs = [] } = Astro.props;
 const formatted = pubDate.toLocaleDateString('en-US', {
 	year: 'numeric',
 	month: 'long',
 	day: 'numeric',
 	timeZone: 'UTC',
 });
-const appStoreUrl = 'https://apps.shopify.com/blocklist';
 const site = Astro.site ?? new URL('https://heyblox.com');
 const pagePath = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
 const pageUrl = new URL(pagePath, site).href;
@@ -62,7 +62,7 @@ const jsonLd: Record<string, unknown>[] = [
 			applicationCategory: 'BusinessApplication',
 			operatingSystem: 'Shopify',
 			url: 'https://heyblox.com',
-			downloadUrl: appStoreUrl,
+			downloadUrl: APP_STORE_URL,
 		},
 	},
 	{
@@ -136,7 +136,7 @@ if (faqs.length > 0) {
 				}
 			</div>
 			<p class="guide__cta">
-				<a class="btn" href={appStoreUrl} rel="noopener noreferrer">Install Blox on Shopify</a>
+				<a class="btn" href={appStoreUrl(`${guidePlacement(id)}-cta`)} rel="noopener noreferrer">Install Blox on Shopify</a>
 			</p>
 		</div>
 	</article>

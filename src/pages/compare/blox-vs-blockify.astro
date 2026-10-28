@@ -1,8 +1,7 @@
 ---
 import CompareLayout from '../../layouts/CompareLayout.astro';
-import { withBase } from '../../lib/urls';
+import { appStoreUrl, withBase } from '../../lib/urls';
 
-const appStoreUrl = 'https://apps.shopify.com/blocklist';
 ---
 
 <CompareLayout
@@ -70,7 +69,7 @@ const appStoreUrl = 'https://apps.shopify.com/blocklist';
 						<th scope="row">Pricing</th>
 						<td>
 							Free under 100 orders/month; $19, $49, or $99/month. No per-transaction fees.
-							<a href={appStoreUrl} rel="noopener noreferrer">Blox on the App Store</a>
+							<a href={appStoreUrl('compare-blockify-pricing')} rel="noopener noreferrer">Blox on the App Store</a>
 						</td>
 						<td>Subscription plans for filter rules</td>
 					</tr>
@@ -80,7 +79,7 @@ const appStoreUrl = 'https://apps.shopify.com/blocklist';
 	</section>
 
 	<p class="compare__cta">
-		<a class="btn" href={appStoreUrl} rel="noopener noreferrer">Install Blox on Shopify</a>
+		<a class="btn" href={appStoreUrl('compare-blockify-cta')} rel="noopener noreferrer">Install Blox on Shopify</a>
 	</p>
 	<p class="compare__more">
 		<a href={withBase('compare/')}>Blox vs NoFraud, Signifyd, and Blockify</a>
