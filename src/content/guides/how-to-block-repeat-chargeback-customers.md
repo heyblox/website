@@ -14,7 +14,7 @@ This guide shows how to use [Blox](https://apps.shopify.com/blocklist) to stop *
 Merchants usually see some mix of:
 
 - A chargeback after fulfillment, then a new order under a slightly different email
-- A **serial returner** who cycles products with a high refund rate
+- A **serial returner** who cycles products with a high refund rate (see [how to stop serial returners on Shopify](../how-to-stop-serial-returners-on-shopify/))
 - A **refund abuser** pattern: discounts, “item not received,” or friendly fraud signals across accounts
 
 Local rules that only match one email or card miss the person. Blox is built around a **blocklist-first** model: identifiers are grouped into one profile automatically, you block once, and other merchants’ blocks can flag risk on your store.

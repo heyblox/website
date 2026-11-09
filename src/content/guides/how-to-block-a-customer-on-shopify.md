@@ -93,6 +93,7 @@ Use native tools for exact-match rules and documentation. Use a blocklist when y
 
 - [What is a chargeback blacklist?](../chargeback-blacklist/)
 - [How to block repeat chargeback customers with Blox](../how-to-block-repeat-chargeback-customers/)
+- [How to stop serial returners and refund abuse on Shopify](../how-to-stop-serial-returners-on-shopify/)
 - [Blocklist vs fraud filter: when to use each](../blocklist-vs-fraud-filter/)
 - [FAQ: Shopify fraud, chargebacks, and blocklists](../../faq/)
 - [Blox vs NoFraud, Signifyd, and Blockify](../../compare/)
